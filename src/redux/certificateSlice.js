@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   students: [],
   certificates: [],
+  personnel: [],
   loggedin: 'empty',
   status: 'idle',
   error: 'no errors yet',
@@ -11,13 +12,12 @@ const initialState = {
 
 export const displayCertificates = createAsyncThunk(
   'user/display_certificates',
-  async (token) => {
+  async () => {
     try {
       const response = await fetch('http://localhost:2000/api/v1/certificates', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -33,13 +33,12 @@ export const displayCertificates = createAsyncThunk(
   },
 );
 
-export const displayStudents = createAsyncThunk('user/display_students', async (token) => {
+export const displayStudents = createAsyncThunk('user/display_students', async () => {
   try {
     const response = await fetch('http://localhost:2000/api/v1/students', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -53,6 +52,29 @@ export const displayStudents = createAsyncThunk('user/display_students', async (
     throw new Error('Something went wrong with creating the user');
   }
 });
+
+export const displayPersonnel = createAsyncThunk(
+  'user/display_personnel',
+  async () => {
+    try {
+      const response = await fetch('http://localhost:2000/api/v1/trainingpersonnels', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Something went wrong with creating the user');
+    }
+  },
+);
 
 const certificatesSlice = createSlice({
   name: 'display_certificates',
@@ -78,7 +100,7 @@ const certificatesSlice = createSlice({
         status: 'failed',
         error: action.error.message,
       }))
-      // extra reducers for displaybatch
+      // extra reducers for displaystudents
       .addCase(displayStudents.pending, (state) => ({
         ...state,
         loggedin: 'false',
@@ -92,6 +114,25 @@ const certificatesSlice = createSlice({
         status: 'done',
       }))
       .addCase(displayStudents.rejected, (state, action) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'failed',
+        error: action.error.message,
+      }))
+      // extra reducers for displaypersonnel
+      .addCase(displayPersonnel.pending, (state) => ({
+        ...state,
+        loggedin: 'false',
+        status: 'loading',
+      }))
+      .addCase(displayPersonnel.fulfilled, (state, action) => ({
+        // Update the state with the received user data
+        ...state,
+        loggedin: 'true',
+        personnel: action.payload,
+        status: 'done',
+      }))
+      .addCase(displayPersonnel.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',
