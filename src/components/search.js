@@ -40,7 +40,7 @@ function Search() {
   console.log(certificates);
   console.log(students);
   return (
-    <div>
+    <div className="search-cont">
       <div>
         <input
           type="text"

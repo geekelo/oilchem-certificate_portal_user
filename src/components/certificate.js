@@ -1,17 +1,77 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+import QRCode from 'qrcode.react';
 import { displayPersonnel } from '../redux/certificateSlice';
+import logo from '../assets/cert-logo.png';
+import '../stylesheets/certificate.css';
+import sidedesign1 from '../assets/cert-side1.png';
+import sidedesign2 from '../assets/cert-side2.png';
+import ogtanlogo from '../assets/OGTAN-from-web.webp';
+import isologo from '../assets/iso-logo.png';
 
 function Certificate({ foundCertificate }) {
   const dispatch = useDispatch();
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
   console.log(foundCertificate);
+  const certificateRef = useRef();
+  const [imageLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(displayPersonnel());
   }, [dispatch]);
+
+  const downloadCertificate = async () => {
+    if (!imageLoaded) {
+      console.log('Images are not loaded yet. Aborting download.');
+      return;
+    }
+    const certificate = certificateRef.current;
+
+    const canvas = await html2canvas(certificate, {
+      allowTaint: true,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: document.documentElement.scrollWidth,
+      windowHeight: document.documentElement.scrollHeight,
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    // eslint-disable-next-line new-cap
+    const pdf = new jsPDF({ orientation: 'landscape' });
+    pdf.addImage(imgData, 'PNG', 0, 0);
+    pdf.save('certificate.pdf');
+  };
+
+  useEffect(() => {
+    const image1 = new Image();
+    image1.src = sidedesign1;
+
+    const image2 = new Image();
+    image2.src = sidedesign2;
+
+    const image3 = new Image();
+    image3.src = logo;
+
+    Promise.all([
+      new Promise((resolve) => {
+        image1.onload = resolve;
+      }),
+      new Promise((resolve) => {
+        image2.onload = resolve;
+      }),
+      new Promise((resolve) => {
+        image3.onload = resolve;
+      }),
+    ]).then(() => {
+      console.log('All images loaded successfully.');
+      setImagesLoaded(true);
+    });
+  }, []);
 
   if (personnel) {
     const trainingdirector = personnel
@@ -23,25 +83,65 @@ function Certificate({ foundCertificate }) {
     const externalfacilitator = personnel
       .filter((each) => each.id === certificate[0].external_facilitator_id);
 
-    console.log(trainingdirector);
+    const qrCodeData = `${certificate[0].name}, ${student[0].name}, ${student[0].unique_number}`;
+
     return (
       <div>
-        <div>Certificate</div>
-        <p>{certificate[0].name}</p>
-        <p>{certificate[0].title}</p>
-        <p>{certificate[0].course}</p>
-        <p>{certificate[0].purpose}</p>
-        <p>{certificate[0].start_date}</p>
-        <p>{certificate[0].end_date}</p>
-        <p>{trainingdirector[0].name}</p>
-        <p>{trainingdirector[0].signature}</p>
-        <p>{traininginstructor[0].name}</p>
-        <p>{traininginstructor[0].signature}</p>
-        <p>{externalfacilitator[0].name}</p>
-        <p>{externalfacilitator[0].signature}</p>
-        <p>{student[0].name}</p>
-        <p>{student[0].unique_number}</p>
+        <div>
+          <div className="certificate-cont">
+            <div className="certificate" ref={certificateRef}>
+              <div>
+                <img src={sidedesign1} alt="sidedesign" width="80" className="side-design" />
+                <img src={sidedesign2} alt="sidedesign" width="80" className="side-design" />
+              </div>
+              <div className="cert-data-section">
+                <img src={logo} alt="logo" width="80" className="cert-logo" />
+                <h2 className="cert-name">{certificate[0].name}</h2>
+                <p className="cert-title">{certificate[0].title}</p>
+                <p className="cert-awardedto">Certificate Awarded to:</p>
+                <p className="stud-name">{student[0].name}</p>
+                <p className="cert-purpose">{certificate[0].purpose}</p>
+                <p className="cert-title">{certificate[0].course}</p>
+                <div className="duration">
+                  <span>{certificate[0].start_date}</span>
+                  <span> - </span>
+                  <span>{certificate[0].end_date}</span>
+                </div>
+                <div className="personnel">
+                  <div>
+                    <img className="signature" src={trainingdirector[0].signature} alt="sign" width="20" />
+                    <p className="cert-awardedto">{trainingdirector[0].name}</p>
+                    <p className="cert-awardedto personnel-title">Training Director</p>
+                  </div>
+                  <div>
+                    <img className="signature" src={traininginstructor[0].signature} alt="sign" width="20" />
+                    <p className="cert-awardedto">{traininginstructor[0].name}</p>
+                    <p className="cert-awardedto personnel-title">External Facilitator</p>
+                  </div>
+                  <div>
+                    <img className="signature" src={externalfacilitator[0].signature} alt="sign" width="20" />
+                    <p className="cert-awardedto">{externalfacilitator[0].name}</p>
+                    <p className="cert-awardedto personnel-title">Training Director</p>
+                  </div>
+                </div>
+                <div className="footer">
+                  <div className="partners-logo-cont">
+                    <span><img className="signature" src={ogtanlogo} alt="sign" width="30" /></span>
+                    <span><img className="signature" src={isologo} alt="sign" width="30" /></span>
+                  </div>
+                  <div className="qr-code-cont">
+                    <div className="qrcode"><QRCode value={qrCodeData} size={40} /></div>
+                    <p className="cert-awardedto">
+                      {student[0].unique_number}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <button type="submit" onClick={downloadCertificate}>Download Certificate</button>
+        </div>
       </div>
     );
   }

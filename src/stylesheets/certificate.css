@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.certificate-cont {
+  padding-right: 5vh;
+  background-color: #fff;
+}
+
+.cert-name {
+  color: #0d381e;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.cert-logo {
+  position: relative;
+  top: 5%;
+}
+
+.side-design {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 20vh;
+  display: block;
+}
+
+.certificate {
+  background-color: #fff;
+  width: 75vh;
+  height: 64.5vh;
+  display: flex;
+  margin: auto;
+  gap: 5px;
+}
+
+.cert-data-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70vh;
+}
+
+.cert-name {
+  position: relative;
+  top: 3vh;
+  font-size: 3.3vh;
+  text-transform: capitalize;
+}
+
+.cert-title {
+  position: relative;
+  top: 1vh;
+  font-size: 2.5vh;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 900;
+}
+
+.cert-awardedto {
+  font-size: 2vh;
+  margin: 1vh 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.cert-purpose {
+  font-size: 1.5vh;
+  margin: 1vh 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.stud-name {
+  font-size: 4vh;
+  font-weight: 600;
+  margin: 0.7vh 0;
+  display: flex;
+  border-bottom: 1px dotted #0d381e;
+}
+
+.duration {
+  font-size: 2vh;
+  margin-top: 2vh;
+}
+
+.personnel {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.personnel-title {
+  border-top: 1px dotted #0d381e;
+  font-weight: bold;
+}
+
+.signature {
+  display: block;
+  margin: auto;
+}
+
+.partners-logo-cont {
+  display: flex;
+  gap: 5vh;
+}
+
+.qr-code-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.qr-code-cont > p {
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  gap: 25vh;
+  margin-top: 1.5vh;
+  justify-content: flex-end;
+  font-weight: bold;
+}
