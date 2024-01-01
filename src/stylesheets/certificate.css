@@ -3,6 +3,8 @@
 .certificate-cont {
   padding-right: 5vh;
   background-color: #fff;
+  width: 80%;
+  margin: auto;
 }
 
 .cert-name {
@@ -10,11 +12,14 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-transform: capitalize;
+  margin-top: 0;
 }
 
 .cert-logo {
   position: relative;
-  top: 5%;
+  top: 8%;
+  margin-top: 3vh;
+  margin-bottom: 0;
 }
 
 .side-design {
@@ -28,10 +33,7 @@
 
 .certificate {
   background-color: #fff;
-  width: 75vh;
-  height: 64.5vh;
   display: flex;
-  margin: auto;
   gap: 5px;
 }
 
@@ -41,18 +43,18 @@
   justify-content: flex-start;
   align-items: center;
   width: 70vh;
+  margin: auto;
 }
 
 .cert-name {
   position: relative;
-  top: 3vh;
+  top: 1vh;
   font-size: 3.3vh;
   text-transform: capitalize;
+  margin: 0;
 }
 
 .cert-title {
-  position: relative;
-  top: 1vh;
   font-size: 2.5vh;
   text-transform: uppercase;
   margin: 0;
@@ -83,7 +85,7 @@
 
 .duration {
   font-size: 2vh;
-  margin-top: 2vh;
+  margin-top: 1vh;
 }
 
 .personnel {
@@ -121,8 +123,32 @@
 
 .footer {
   display: flex;
-  gap: 25vh;
+  gap: 15vh;
   margin-top: 1.5vh;
   justify-content: flex-end;
   font-weight: bold;
+}
+
+.cert-verify {
+  font-size: 0.7rem;
+  margin-top: -0.5vh;
+}
+
+
+.download-btn {
+  background-color: #0d381e1d;
+  margin: auto;
+  color: #fff;
+  display: block;
+  margin-top: 2vh;
+  border-radius: 2vh;
+  border: none;
+  padding: 1rem;
+  color: #0d381e;
+  font-weight: bold;
+  font-family: 'Montserrat', 'Arial';
+}
+
+.download-btn:hover {
+  background-color: #07672d1d;
 }

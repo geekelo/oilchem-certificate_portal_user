@@ -1,0 +1,18 @@
+.pagefooter {
+  background-color: rgb(2, 40, 2);
+  color: #fff;
+  height: 15vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', 'Arial';
+  font-weight: bold;
+  font-size: 1rem;
+}

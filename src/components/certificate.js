@@ -36,8 +36,8 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      windowWidth: document.documentElement.scrollWidth,
-      windowHeight: document.documentElement.scrollHeight,
+      windowWidth: 700,
+      windowHeight: 620,
     });
 
     const imgData = canvas.toDataURL('image/png');
@@ -126,21 +126,23 @@ function Certificate({ foundCertificate }) {
                 </div>
                 <div className="footer">
                   <div className="partners-logo-cont">
-                    <span><img className="signature" src={ogtanlogo} alt="sign" width="30" /></span>
-                    <span><img className="signature" src={isologo} alt="sign" width="30" /></span>
+                    <span><img className="signature" src={ogtanlogo} alt="sign" width="35" /></span>
+                    <span><img className="signature" src={isologo} alt="sign" width="40" /></span>
                   </div>
                   <div className="qr-code-cont">
                     <div className="qrcode"><QRCode value={qrCodeData} size={40} /></div>
                     <p className="cert-awardedto">
+                      ID:
                       {student[0].unique_number}
                     </p>
                   </div>
                 </div>
+                <p className="cert-verify">Verify certificate ID @ oilchemmudschool.com/certificates</p>
               </div>
             </div>
           </div>
 
-          <button type="submit" onClick={downloadCertificate}>Download Certificate</button>
+          <button className="download-btn" type="submit" onClick={downloadCertificate}> ⤓ Download Certificate</button>
         </div>
       </div>
     );
