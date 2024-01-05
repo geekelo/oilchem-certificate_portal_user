@@ -12,6 +12,7 @@ function Search() {
   const [foundCertificate, setCertificate] = useState({});
   const [response, setResponse] = useState('');
 
+  // HANDLE NOTIFICATIONS
   useEffect(() => {
     const res = localStorage.getItem('status');
     if (res) {
@@ -29,6 +30,7 @@ function Search() {
     dispatch(displayPersonnel());
   }, [dispatch]);
 
+  // HANDLE SEARCH
   const handlesubmit = () => {
     const targetStudent = students.filter((each) => each.unique_number === searchValue);
     if (targetStudent.length > 0) {
@@ -51,7 +53,7 @@ function Search() {
         window.location.reload();
       }
     } else {
-      const statusObject = { response: 'The Certificate ID Is Invalid Please check again and input a valid certificate ID' };
+      const statusObject = { response: 'The Certificate ID is Invalid please check again and input a valid certificate ID' };
       const statusString = JSON.stringify(statusObject);
       localStorage.setItem('status', statusString);
       window.location.reload();
@@ -64,8 +66,6 @@ function Search() {
     );
   };
 
-  console.log(certificates);
-  console.log(students);
   return (
     <div className="search-cont">
       <div className="search">

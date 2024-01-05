@@ -47,6 +47,18 @@ function Certificate({ foundCertificate }) {
     pdf.save('certificate.pdf');
   };
 
+  const formatDate = (inputDate) => {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
+    const [year, month, day] = inputDate.split('-');
+    const monthAbbreviation = months[parseInt(month, 10) - 1];
+
+    return `${parseInt(day, 10)} ${monthAbbreviation}, ${year}`;
+  };
+
   useEffect(() => {
     const image1 = new Image();
     image1.src = sidedesign1;
@@ -103,9 +115,13 @@ function Certificate({ foundCertificate }) {
                 <p className="cert-purpose">{certificate[0].purpose}</p>
                 <p className="cert-title">{certificate[0].course}</p>
                 <div className="duration">
-                  <span>{certificate[0].start_date}</span>
+                  <span>
+                    {formatDate(certificate[0].start_date)}
+                  </span>
                   <span> - </span>
-                  <span>{certificate[0].end_date}</span>
+                  <span>
+                    {formatDate(certificate[0].end_date)}
+                  </span>
                 </div>
                 <div className="personnel">
                   <div>
