@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Certificate from './certificate';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import '../stylesheets/search.css';
+import CopyButton from './copyBtn';
 
 function Search() {
   const dispatch = useDispatch();
@@ -11,6 +12,8 @@ function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [foundCertificate, setCertificate] = useState({});
   const [response, setResponse] = useState('');
+  const [fullURL, setfullURL] = useState('');
+  const url = window.location.href;
 
   // HANDLE NOTIFICATIONS
   useEffect(() => {
@@ -22,7 +25,6 @@ function Search() {
       setTimeout(() => {
         localStorage.removeItem('status');
         // Log after the timeout
-        console.log('After setTimeout - Item removed');
       }, 10000);
     }
     dispatch(displayCertificates());
@@ -46,6 +48,7 @@ function Search() {
         const statusString = JSON.stringify(statusObject);
         localStorage.setItem('status', statusString);
         setResponse('Certificate Found!');
+        setfullURL(`${url}${searchValue}`);
       } else {
         const statusObject = { response: 'The Certificate ID Is Invalid Please check again and input a valid certificate ID' };
         const statusString = JSON.stringify(statusObject);
@@ -81,7 +84,11 @@ function Search() {
       {foundCertificate.certificate !== undefined
         ? (
           <>
-            <p className="notification">{response}</p>
+            <div className="notification">
+              {response}
+              &nbsp;
+              <CopyButton textToCopy={fullURL} />
+            </div>
             <Certificate foundCertificate={foundCertificate} />
           </>
         )

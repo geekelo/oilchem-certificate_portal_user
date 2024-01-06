@@ -24,6 +24,7 @@ function Certificate({ foundCertificate }) {
     dispatch(displayPersonnel());
   }, [dispatch]);
 
+  // CERTIFICTE CONVERTER AND DOWNLOADER
   const downloadCertificate = async () => {
     if (!imageLoaded) {
       console.log('Images are not loaded yet. Aborting download.');
@@ -47,6 +48,7 @@ function Certificate({ foundCertificate }) {
     pdf.save('certificate.pdf');
   };
 
+  // DATE FORMATTER
   const formatDate = (inputDate) => {
     const months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -59,6 +61,7 @@ function Certificate({ foundCertificate }) {
     return `${parseInt(day, 10)} ${monthAbbreviation}, ${year}`;
   };
 
+  // ENSURE ALL IMAGES ARE LOADED
   useEffect(() => {
     const image1 = new Image();
     image1.src = sidedesign1;
