@@ -36,8 +36,8 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: '100%',
+      height: '100%',
     });
 
     const imgData = canvas.toDataURL('image/png');
@@ -45,7 +45,7 @@ function Certificate({ foundCertificate }) {
     const pdf = new jsPDF({
       orientation: 'landscape', // or 'landscape'
       unit: 'mm',
-      format: [297, 210], // A4 size in millimeters
+      format: [497, 410], // A4 size in millimeters
     });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
