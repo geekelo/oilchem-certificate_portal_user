@@ -36,11 +36,17 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
+      width: '80%',  // Example using percentage
+      height: '80vh', // Example using viewport height
     });
 
     const imgData = canvas.toDataURL('image/png');
     // eslint-disable-next-line new-cap
-    const pdf = new jsPDF({ orientation: 'landscape' });
+    const pdf = new jsPDF({
+      orientation: 'landscape',
+      unit: 'mm',
+      format: [297, 210], 
+    });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
   };
