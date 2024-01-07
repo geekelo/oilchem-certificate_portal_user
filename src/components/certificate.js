@@ -36,8 +36,8 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      width: '80%', // Example using percentage
-      height: '80vh', // Example using viewport height
+      width: window.innerWidth,
+      height: window.innerHeight,
     });
 
     const imgData = canvas.toDataURL('image/png');
