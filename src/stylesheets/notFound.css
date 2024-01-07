@@ -10,3 +10,12 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', 'Arial';
+  font-weight: bold;
+}

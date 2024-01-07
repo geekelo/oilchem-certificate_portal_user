@@ -13,9 +13,8 @@ function NotFound() {
           <p>
             OOPS!! PAGE NOT FOUND
           </p>
-          <NavLink className="menu-item" style={{ color: '#174217' }} to="/">
+          <NavLink className="singlepage-menu-item " style={{ color: '#174217' }} to="/">
             <AiFillHome className="menu-icon" />
-            <span>Home</span>
           </NavLink>
         </div>
       </div>
