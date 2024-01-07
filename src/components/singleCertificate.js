@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import Certificate from './certificate';
@@ -10,7 +10,6 @@ import spinner from '../assets/rippleloader.gif';
 
 function SingleCertificate() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const fullURL = window.location.href;
   const [studentId, setStudentId] = useState('');
@@ -71,7 +70,7 @@ function SingleCertificate() {
         <AiFillHome className="menu-icon" />
       </NavLink>
     </div>
-  )
+  );
 }
 
 export default SingleCertificate;
