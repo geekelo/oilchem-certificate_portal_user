@@ -42,7 +42,11 @@ function Certificate({ foundCertificate }) {
 
     const imgData = canvas.toDataURL('image/png');
     // eslint-disable-next-line new-cap
-    const pdf = new jsPDF({ orientation: 'landscape' });
+    const pdf = new jsPDF({
+    orientation: 'portrait', // or 'landscape'
+    unit: 'mm',
+    format: [210, 297], // A4 size in millimeters
+  });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
   };
