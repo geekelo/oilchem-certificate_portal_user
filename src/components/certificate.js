@@ -16,7 +16,6 @@ function Certificate({ foundCertificate }) {
   const dispatch = useDispatch();
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
-  console.log(foundCertificate);
   const certificateRef = useRef();
   const [imageLoaded, setImagesLoaded] = useState(false);
 
@@ -27,7 +26,7 @@ function Certificate({ foundCertificate }) {
   // CERTIFICTE CONVERTER AND DOWNLOADER
   const downloadCertificate = async () => {
     if (!imageLoaded) {
-      console.log('Images are not loaded yet. Aborting download.');
+      // Images are not loaded yet. Aborting download.'
       return;
     }
     const certificate = certificateRef.current;
@@ -83,7 +82,7 @@ function Certificate({ foundCertificate }) {
         image3.onload = resolve;
       }),
     ]).then(() => {
-      console.log('All images loaded successfully.');
+      // All images loaded successfully.'
       setImagesLoaded(true);
     });
   }, []);
@@ -170,8 +169,25 @@ function Certificate({ foundCertificate }) {
 
 Certificate.propTypes = {
   foundCertificate: PropTypes.shape({
-    certificate: PropTypes.objectOf(PropTypes.string).isRequired,
-    student: PropTypes.objectOf(PropTypes.string).isRequired,
+    certificate: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      training_director_id: PropTypes.string,
+      external_facilitator_id: PropTypes.string,
+      training_instructor_id: PropTypes.string,
+      name: PropTypes.string,
+      title: PropTypes.string,
+      purpose: PropTypes.string,
+      course: PropTypes.string,
+      start_date: PropTypes.string,
+      end_date: PropTypes.string,
+      unique_number: PropTypes.string,
+      // Other properties and their PropTypes
+    })).isRequired,
+    student: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      unique_number: PropTypes.string,
+      // Student properties and their PropTypes
+    })).isRequired,
     // Add other properties and their PropTypes as needed
   }).isRequired,
 };

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import Certificate from './certificate';
 import CopyButton from './copyBtn';
 
 function SingleCertificate() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const fullURL = window.location.href;
   const [studentId, setStudentId] = useState('');
+  const [pageNotFound, setpageNotFound] = useState(1);
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students);
@@ -26,6 +27,8 @@ function SingleCertificate() {
           student: targetStudent,
         });
       }
+    } else {
+      setpageNotFound(pageNotFound + 1);
     }
   };
 
@@ -41,8 +44,11 @@ function SingleCertificate() {
     setStudentId(id);
   }, [dispatch]);
 
+  if (pageNotFound === 4) {
+    navigate('/404');
+  }
+
   if (foundCertificate.certificate) {
-    console.log(location);
     return (
       <div className="search-cont">
         <div className="notification">
@@ -54,7 +60,6 @@ function SingleCertificate() {
       </div>
     );
   }
-  return null;
 }
 
 export default SingleCertificate;
