@@ -36,8 +36,8 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      width: 1480,
-      height: 2508,
+      width: 2480,
+      height: 3508,
     });
 
     const imgData = canvas.toDataURL('image/png');
