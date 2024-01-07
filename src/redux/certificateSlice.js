@@ -14,7 +14,7 @@ export const displayCertificates = createAsyncThunk(
   'user/display_certificates',
   async () => {
     try {
-      const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/certificates', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const displayCertificates = createAsyncThunk(
 
 export const displayStudents = createAsyncThunk('user/display_students', async () => {
   try {
-    const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/students', {
+    const response = await fetch('https://oilchem-api.onrender.com/api/v1/students', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const displayPersonnel = createAsyncThunk(
   'user/display_personnel',
   async () => {
     try {
-      const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/trainingpersonnels', {
+      const response = await fetch('https://oilchem-api.onrender.com/api/v1/trainingpersonnels', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
