@@ -1,0 +1,12 @@
+.singlepage-menu-item {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 20px;
+  background-color: azure;
+  height: 20px;
+  padding: 0.8rem;
+  box-shadow: -3px -3px 3px #0000008e;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

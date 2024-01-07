@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { AiFillHome } from 'react-icons/ai';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import Certificate from './certificate';
 import CopyButton from './copyBtn';
+import '../stylesheets/notFound.css';
 
 function SingleCertificate() {
   const dispatch = useDispatch();
@@ -51,6 +53,9 @@ function SingleCertificate() {
   if (foundCertificate.certificate) {
     return (
       <div className="search-cont">
+        <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
+          <AiFillHome className="menu-icon" />
+        </NavLink>
         <div className="notification">
           Link to Certificate -
           <CopyButton textToCopy={fullURL} />
