@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, useNavigate, NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import Certificate from './certificate';
 import CopyButton from './copyBtn';
-import '../stylesheets/notFound.css';
 import spinner from '../assets/rippleloader.gif';
+import '../stylesheets/notFound.css';
 
 function SingleCertificate() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const fullURL = window.location.href;
   const [studentId, setStudentId] = useState('');
+  const [pageNotFound, setpageNotFound] = useState(1);
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students);
@@ -28,6 +30,8 @@ function SingleCertificate() {
           student: targetStudent,
         });
       }
+    } else {
+      setpageNotFound(pageNotFound + 1);
     }
   };
 
@@ -42,6 +46,10 @@ function SingleCertificate() {
     const id = location.pathname.split('/').pop();
     setStudentId(id);
   }, [dispatch]);
+
+  if (pageNotFound > 3) {
+    navigate('/404');
+  }
 
   if (foundCertificate.certificate) {
     return (
@@ -61,11 +69,13 @@ function SingleCertificate() {
   return (
     <div className="table-cont">
       <div className="flex-container loader">
-        <img src={spinner} alt="spinner" width="700" />
+        <div className="loader">
+          <img src={spinner} alt="spinner" width="300" />
+        </div>
+        <p>
+          CHECKING...
+        </p>
       </div>
-      <p>
-        CHECKING...
-      </p>
       <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
         <AiFillHome className="menu-icon" />
       </NavLink>
