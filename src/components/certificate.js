@@ -36,7 +36,7 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      width: '80%',  // Example using percentage
+      width: '80%', // Example using percentage
       height: '80vh', // Example using viewport height
     });
 
@@ -45,7 +45,7 @@ function Certificate({ foundCertificate }) {
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
-      format: [297, 210], 
+      format: [297, 210],
     });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
