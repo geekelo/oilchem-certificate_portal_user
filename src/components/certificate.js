@@ -155,7 +155,7 @@ function Certificate({ foundCertificate }) {
                     <div className="qrcode"><QRCode value={qrCodeData} size={40} /></div>
                     <p className="cert-awardedto">
                       ID:
-                      {student[0].unique_number.toLowerCase()}
+                      <span className="stud-num">{student[0].unique_number}</span>
                     </p>
                   </div>
                 </div>

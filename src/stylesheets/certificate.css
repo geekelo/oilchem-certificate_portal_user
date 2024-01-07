@@ -18,6 +18,10 @@
   margin-top: 0;
 }
 
+.stud-num {
+  text-transform: lowercase;
+}
+
 .cert-logo {
   position: relative;
   top: 8%;
