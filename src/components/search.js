@@ -83,14 +83,14 @@ function Search() {
       </div>
       {foundCertificate.certificate !== undefined
         ? (
-          <>
+          <div>
             <div className="notification">
               {response}
               &nbsp;
               <CopyButton textToCopy={fullURL} />
             </div>
             <Certificate foundCertificate={foundCertificate} />
-          </>
+          </div>
         )
         : (<p className="notification">{response}</p>)}
     </div>

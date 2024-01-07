@@ -163,7 +163,6 @@ function Certificate({ foundCertificate }) {
               </div>
             </div>
           </div>
-
           <button className="download-btn" type="submit" onClick={downloadCertificate}> ⤓ Download Certificate</button>
         </div>
       </div>

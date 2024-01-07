@@ -20,12 +20,14 @@ input {
 }
 
 .search-cont {
-  width: 90vh;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .search {
   display: flex;
+  width: 90vh;
   gap: 5px;
   margin: 0;
   justify-content: center;
