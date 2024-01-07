@@ -36,8 +36,8 @@ function Certificate({ foundCertificate }) {
       useCORS: true,
       scrollX: 0,
       scrollY: 0,
-      windowWidth: 700,
-      windowHeight: 620,
+      windowWidth: 2480,
+      windowHeight: 3508,
     });
 
     const imgData = canvas.toDataURL('image/png');
@@ -155,7 +155,7 @@ function Certificate({ foundCertificate }) {
                     </p>
                   </div>
                 </div>
-                <p className="cert-verify">Verify certificate ID @ oilchemmudschool.com/certificates</p>
+                <p className="cert-verify">Verify certificate ID @ verify.oilchemmudschool.com</p>
               </div>
             </div>
           </div>
