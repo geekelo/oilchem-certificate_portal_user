@@ -45,7 +45,7 @@ function Certificate({ foundCertificate }) {
     const pdf = new jsPDF({
       orientation: 'landscape',
       unit: 'mm',
-      format: [297, 210]
+      format: [297, 210],
     });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
