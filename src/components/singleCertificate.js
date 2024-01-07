@@ -46,7 +46,7 @@ function SingleCertificate() {
     setStudentId(id);
   }, [dispatch]);
 
-  if (pageNotFound > 2) {
+  if (pageNotFound > 3) {
     navigate('/404');
   }
 
