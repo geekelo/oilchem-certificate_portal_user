@@ -127,15 +127,15 @@ function Certificate({ foundCertificate }) {
       left: 0,
       bottom: 0,
       top: 0,
-      width: '20vh',
+      width: '50vh',
       display: 'block',
     },
 
     certificate: {
       backgroundColor: '#fff',
       display: 'flex',
-      width: '50vh',
-      height: '50vh',
+      width: '150vh',
+      height: '250vh',
       gap: '5px',
     },
 
