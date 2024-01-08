@@ -46,7 +46,6 @@ function Certificate({ foundCertificate }) {
 
     // Add the HTML content to the PDF
     pdf.html(certificate, {
-      autoPaging: false,
       async callback(pdf) {
         await pdf.save('document');
       },
