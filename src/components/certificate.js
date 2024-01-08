@@ -98,8 +98,8 @@ function Certificate({ foundCertificate }) {
   const styles = {
     certificatecont: {
       display: 'flex',
-      paddingRight: '5vh',
-      width: '100vh',
+      paddingRight: '5%',
+      width: '100%',
       margin: 'auto',
     },
 
@@ -118,7 +118,7 @@ function Certificate({ foundCertificate }) {
     certLogo: {
       position: 'relative',
       top: '8%',
-      marginTop: '3vh',
+      marginTop: '3%',
       marginBottom: 0,
     },
 
@@ -127,15 +127,15 @@ function Certificate({ foundCertificate }) {
       left: 0,
       bottom: 0,
       top: 0,
-      width: '50vh',
+      width: '50%',
       display: 'block',
     },
 
     certificate: {
       backgroundColor: '#fff',
       display: 'flex',
-      width: '350vh',
-      height: '850vh',
+      width: '100%',
+      height: '100%',
       gap: '5px',
     },
 
@@ -150,51 +150,51 @@ function Certificate({ foundCertificate }) {
 
     certNameSection: {
       position: 'relative',
-      top: '1vh',
-      fontSize: '3.3vh',
+      top: '10%',
+      fontSize: '3%',
       textTransform: 'capitalize',
       margin: 0,
     },
 
     certTitle: {
-      fontSize: '2.5vh',
+      fontSize: '2.5%',
       textTransform: 'uppercase',
       margin: 0,
       fontWeight: 900,
     },
 
     certAwardedTo: {
-      fontSize: '2vh',
-      margin: '1vh 0',
+      fontSize: '2%',
+      margin: '1% 0',
       textAlign: 'center',
       textTransform: 'capitalize',
     },
 
     certPurpose: {
-      fontSize: '1.5vh',
-      margin: '1vh 0',
+      fontSize: '1.5%',
+      margin: '1% 0',
       textAlign: 'center',
       textTransform: 'uppercase',
     },
 
     studName: {
-      fontSize: '4vh',
+      fontSize: '4%',
       fontWeight: 600,
-      margin: '0.7vh 0',
+      margin: '0.7% 0',
       display: 'flex',
       borderBottom: '1px dotted #0d381e',
     },
 
     duration: {
-      fontSize: '2vh',
-      marginTop: '1vh',
+      fontSize: '2%',
+      marginTop: '1%',
     },
 
     personnel: {
       display: 'flex',
       gap: '10px',
       alignItems: 'center',
-      marginTop: '2vh',
+      marginTop: '2%',
     },
 
     personnelTitle: {
@@ -209,7 +209,7 @@ function Certificate({ foundCertificate }) {
 
     partnersLogoCont: {
       display: 'flex',
-      gap: '1vh',
+      gap: '1%',
     },
 
     qrCodeCont: {
@@ -225,15 +225,15 @@ function Certificate({ foundCertificate }) {
 
     footer: {
       display: 'flex',
-      gap: '15vh',
-      marginTop: '1.5vh',
+      gap: '15%',
+      marginTop: '1.5%',
       justifyContent: 'flex-end',
       fontWeight: 'bold',
     },
 
     certVerify: {
       fontSize: '0.7rem',
-      marginTop: '-0.5vh',
+      marginTop: '-0.5%',
     },
 
     downloadBtn: {
@@ -241,8 +241,8 @@ function Certificate({ foundCertificate }) {
       margin: 'auto',
       color: '#fff',
       display: 'block',
-      marginTop: '2vh',
-      borderRadius: '2vh',
+      marginTop: '2%',
+      borderRadius: '2%',
       border: 'none',
       padding: '1rem',
       fontWeight: 'bold',
