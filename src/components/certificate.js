@@ -43,7 +43,7 @@ function Certificate({ foundCertificate }) {
     const pdf = new jsPDF({
       orientation: 'landscape', // or 'landscape'
       unit: 'mm',
-      format: [1497, 1410], // A4 size in millimeters
+      format: [349, 341], // A4 size in millimeters
     });
     pdf.addImage(imgData, 'PNG', 0, 0);
     pdf.save('certificate.pdf');
