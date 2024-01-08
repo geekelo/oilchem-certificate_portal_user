@@ -38,7 +38,8 @@
 .certificate {
   background-color: #fff;
   display: flex;
-  width: 100%;
+  width: 100vh;
+  height: 100vh;
   gap: 5px;
 }
 

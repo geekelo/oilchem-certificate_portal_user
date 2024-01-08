@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import QRCode from 'qrcode.react';
 import { displayPersonnel } from '../redux/certificateSlice';
@@ -29,24 +29,31 @@ function Certificate({ foundCertificate }) {
       // Images are not loaded yet. Aborting download.'
       return;
     }
+
     const certificate = certificateRef.current;
 
-    const canvas = await html2canvas(certificate, {
-      allowTaint: true,
-      useCORS: true,
-      scrollX: 0,
-      scrollY: 0,
-    });
+    // Get the HTML content of the certificate
+    // const certificateHTML = certificate.outerHTML;
 
-    const imgData = canvas.toDataURL('image/png');
     // eslint-disable-next-line new-cap
     const pdf = new jsPDF({
-      orientation: 'landscape', // or 'landscape'
-      unit: 'mm',
-      format: [349, 341], // A4 size in millimeters
+      orientation: 'landscape',
     });
-    pdf.addImage(imgData, 'PNG', 0, 0);
-    pdf.save('certificate.pdf');
+
+    // Add the image to the PDF
+    // const imgData = canvas.toDataURL('image/png');
+    // pdf.addImage(imgData, 'PNG', 0, 0);
+
+    // Add the HTML content to the PDF
+    pdf.html(certificate, {
+      autoPaging: false,
+      async callback(pdf) {
+        await pdf.save('document');
+      },
+    });
+
+    // Save the PDF
+    // pdf.save('certificate.pdf');
   };
 
   // DATE FORMATTER
@@ -89,6 +96,165 @@ function Certificate({ foundCertificate }) {
     });
   }, []);
 
+  const styles = {
+    certificatecont: {
+      display: 'flex',
+      paddingRight: '5vh',
+      width: '100vh',
+      margin: 'auto',
+    },
+
+    certName: {
+      color: '#0d381e',
+      fontFamily: 'Montserrat, sans-serif',
+      fontWeight: 'bold',
+      textTransform: 'capitalize',
+      marginTop: 0,
+    },
+
+    studNum: {
+      textTransform: 'lowercase',
+    },
+
+    certLogo: {
+      position: 'relative',
+      top: '8%',
+      marginTop: '3vh',
+      marginBottom: 0,
+    },
+
+    sideDesign: {
+      position: 'relative',
+      left: 0,
+      bottom: 0,
+      top: 0,
+      width: '20vh',
+      display: 'block',
+    },
+
+    certificate: {
+      backgroundColor: '#fff',
+      display: 'flex',
+      width: '50vh',
+      height: '50vh',
+      gap: '5px',
+    },
+
+    certDataSection: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      width: '70%',
+      margin: 'auto',
+    },
+
+    certNameSection: {
+      position: 'relative',
+      top: '1vh',
+      fontSize: '3.3vh',
+      textTransform: 'capitalize',
+      margin: 0,
+    },
+
+    certTitle: {
+      fontSize: '2.5vh',
+      textTransform: 'uppercase',
+      margin: 0,
+      fontWeight: 900,
+    },
+
+    certAwardedTo: {
+      fontSize: '2vh',
+      margin: '1vh 0',
+      textAlign: 'center',
+      textTransform: 'capitalize',
+    },
+
+    certPurpose: {
+      fontSize: '1.5vh',
+      margin: '1vh 0',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+    },
+
+    studName: {
+      fontSize: '4vh',
+      fontWeight: 600,
+      margin: '0.7vh 0',
+      display: 'flex',
+      borderBottom: '1px dotted #0d381e',
+    },
+
+    duration: {
+      fontSize: '2vh',
+      marginTop: '1vh',
+    },
+
+    personnel: {
+      display: 'flex',
+      gap: '10px',
+      alignItems: 'center',
+      marginTop: '2vh',
+    },
+
+    personnelTitle: {
+      borderTop: '1px dotted #0d381e',
+      fontWeight: 'bold',
+    },
+
+    signature: {
+      display: 'block',
+      margin: 'auto',
+    },
+
+    partnersLogoCont: {
+      display: 'flex',
+      gap: '1vh',
+    },
+
+    qrCodeCont: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: 0,
+    },
+
+    qrCodeContP: {
+      margin: 0,
+    },
+
+    footer: {
+      display: 'flex',
+      gap: '15vh',
+      marginTop: '1.5vh',
+      justifyContent: 'flex-end',
+      fontWeight: 'bold',
+    },
+
+    certVerify: {
+      fontSize: '0.7rem',
+      marginTop: '-0.5vh',
+    },
+
+    downloadBtn: {
+      backgroundColor: '#0d381e1d',
+      margin: 'auto',
+      color: '#fff',
+      display: 'block',
+      marginTop: '2vh',
+      borderRadius: '2vh',
+      border: 'none',
+      padding: '1rem',
+      fontWeight: 'bold',
+      fontFamily: 'Montserrat, Arial',
+    },
+
+    downloadBtnHover: {
+      backgroundColor: '#07672d1d',
+    },
+  };
+
   if (personnel) {
     const trainingdirector = personnel
       .filter((each) => each.id === certificate[0].training_director_id);
@@ -105,63 +271,62 @@ function Certificate({ foundCertificate }) {
       <div>
         <div>
           <div className="certificate-cont">
-            <div className="certificate" ref={certificateRef}>
+            <div id="canvas" className="certificate" ref={certificateRef}>
               <div>
-                <img src={sidedesign1} alt="sidedesign" width="80" className="side-design" />
-                <img src={sidedesign2} alt="sidedesign" width="80" className="side-design" />
+                <img src={sidedesign1} alt="sidedesign" width="80" style={styles.sideDesign} />
+                <img src={sidedesign2} alt="sidedesign" width="80" style={styles.sideDesign} />
               </div>
-              <div className="cert-data-section">
-                <img src={logo} alt="logo" width="80" className="cert-logo" />
-                <h2 className="cert-name">{certificate[0].name}</h2>
-                <p className="cert-title">{certificate[0].title}</p>
+              <div style={styles.certDataSection}>
+                <img src={logo} alt="logo" width="80" style={styles.certLogo} />
+                <h2 style={styles.certName}>{certificate[0].name}</h2>
+                <p style={styles.certTitle}>{certificate[0].title}</p>
                 <p className="cert-awardedto">Certificate Awarded to:</p>
-                <p className="stud-name">{student[0].name}</p>
-                <p className="cert-purpose">{certificate[0].purpose}</p>
-                <p className="cert-title">{certificate[0].course}</p>
-                <div className="duration">
-                  <span>
-                    {formatDate(certificate[0].start_date)}
-                  </span>
+                <p style={styles.studName}>{student[0].name}</p>
+                <p style={styles.certPurpose}>{certificate[0].purpose}</p>
+                <p style={styles.certTitle}>{certificate[0].course}</p>
+                <div style={styles.duration}>
+                  <span>{formatDate(certificate[0].start_date)}</span>
                   <span> - </span>
-                  <span>
-                    {formatDate(certificate[0].end_date)}
-                  </span>
+                  <span>{formatDate(certificate[0].end_date)}</span>
                 </div>
-                <div className="personnel">
+                <div style={styles.personnel}>
                   <div>
-                    <img className="signature" src={trainingdirector[0].signature} alt="sign" width="20" />
-                    <p className="cert-awardedto">{trainingdirector[0].name}</p>
-                    <p className="cert-awardedto personnel-title">Training Director</p>
+                    <img src={trainingdirector[0].signature} alt="sign" width="20" className="signature" />
+                    <p style={styles.certAwardedTo}>{trainingdirector[0].name}</p>
+                    <p style={styles.personnelTitle}>Training Director</p>
                   </div>
                   <div>
-                    <img className="signature" src={traininginstructor[0].signature} alt="sign" width="20" />
-                    <p className="cert-awardedto">{traininginstructor[0].name}</p>
-                    <p className="cert-awardedto personnel-title">External Facilitator</p>
+                    <img src={traininginstructor[0].signature} alt="sign" width="20" className="signature" />
+                    <p style={styles.certAwardedTo}>{traininginstructor[0].name}</p>
+                    <p style={styles.personnelTitle}>External Facilitator</p>
                   </div>
                   <div>
-                    <img className="signature" src={externalfacilitator[0].signature} alt="sign" width="20" />
-                    <p className="cert-awardedto">{externalfacilitator[0].name}</p>
-                    <p className="cert-awardedto personnel-title">Training Director</p>
+                    <img src={externalfacilitator[0].signature} alt="sign" width="20" className="signature" />
+                    <p style={styles.certAwardedTo}>{externalfacilitator[0].name}</p>
+                    <p style={styles.personnelTitle}>Training Director</p>
                   </div>
                 </div>
-                <div className="footer">
+                <div style={styles.footer}>
                   <div className="partners-logo-cont">
-                    <span><img className="signature" src={ogtanlogo} alt="sign" width="35" /></span>
-                    <span><img className="signature" src={isologo} alt="sign" width="40" /></span>
+                    <span><img src={ogtanlogo} alt="ogtanlogo" width="35" className="signature" /></span>
+                    <span><img src={isologo} alt="isologo" width="40" className="signature" /></span>
                   </div>
-                  <div className="qr-code-cont">
+                  <div style={styles.qrCodeCont}>
                     <div className="qrcode"><QRCode value={qrCodeData} size={40} /></div>
-                    <p className="cert-awardedto">
+                    <p style={styles.certAwardedTo}>
                       ID:
-                      <span className="stud-num">{student[0].unique_number}</span>
+                      <p style={styles.studNum}>{student[0].unique_number}</p>
                     </p>
                   </div>
                 </div>
-                <p className="cert-verify">Verify certificate ID @ verify.oilchemmudschool.com</p>
+                <p style={styles.certVerify}>
+                  Verify certificate ID @ oilchemmudschool.com/certificates
+                </p>
               </div>
             </div>
           </div>
-          <button className="download-btn" type="submit" onClick={downloadCertificate}> ⤓ Download Certificate</button>
+
+          <button style={styles.downloadBtn} type="submit" onClick={downloadCertificate}>⤓ Download Certificate</button>
         </div>
       </div>
     );
