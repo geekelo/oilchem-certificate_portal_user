@@ -134,8 +134,8 @@ function Certificate({ foundCertificate }) {
     certificate: {
       backgroundColor: '#fff',
       display: 'flex',
-      width: '150vh',
-      height: '250vh',
+      width: '350vh',
+      height: '850vh',
       gap: '5px',
     },
 
@@ -270,7 +270,7 @@ function Certificate({ foundCertificate }) {
       <div>
         <div>
           <div className="certificate-cont">
-            <div id="canvas" className="certificate" ref={certificateRef}>
+            <div id="canvas" size="A4" className="certificate" ref={certificateRef}>
               <div>
                 <img src={sidedesign1} alt="sidedesign" width="80" style={styles.sideDesign} />
                 <img src={sidedesign2} alt="sidedesign" width="80" style={styles.sideDesign} />
