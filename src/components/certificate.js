@@ -7,8 +7,8 @@ import QRCode from 'qrcode.react';
 import { displayPersonnel } from '../redux/certificateSlice';
 import logo from '../assets/cert-logo.png';
 import '../stylesheets/certificate.css';
-import sidedesign1 from '../assets/cert-side1.png';
-import sidedesign2 from '../assets/cert-side2.png';
+import sidedesign1 from '../assets/cert-side-test1.png';
+import sidedesign2 from '../assets/cert-side-test2.png';
 import ogtanlogo from '../assets/OGTAN-from-web.webp';
 import isologo from '../assets/iso-logo.png';
 
@@ -17,7 +17,6 @@ function Certificate({ foundCertificate }) {
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
   const certificateRef = useRef();
-  const ogtanlogoRef = useRef();
   const [imageLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
@@ -32,33 +31,31 @@ function Certificate({ foundCertificate }) {
     }
 
     const certificate = certificateRef.current;
-    const ogtanlogo2 = ogtanlogoRef.current;
 
     // Get the HTML content of the certificate
     // const certificateHTML = certificate.outerHTML;
+    setTimeout(async () => {
+      const canvas = await html2canvas(certificate, {
+        allowTaint: true,
+        useCORS: true,
+      });
 
-    const canvas = await html2canvas(ogtanlogo2, {
-      allowTaint: true,
-      useCORS: true,
-    });
+      const imgData = canvas.toDataURL('image/png');
+      // eslint-disable-next-line new-cap
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+      });
 
-    const imgData = canvas.toDataURL('image/png');
-    // eslint-disable-next-line new-cap
-    const pdf = new jsPDF({
-      orientation: 'landscape',
-    });
+      // pdf.html(certificate, {
+      //   async callback(pdf) {
+      //     pdf.addImage(imgData, 'PNG', 0, 0, 0, 0);
+      //     await pdf.save('document');
+      //   },
+      // });
 
-    // Add the image to the PDF
-    // const imgData = canvas.toDataURL('image/png');
-    // pdf.addImage(imgData, 'PNG', 0, 0);
-
-    // Add the HTML content to the PDF
-    pdf.html(certificate, {
-      async callback(pdf) {
-        pdf.addImage(imgData, 'PNG', 0, 0);
-        await pdf.save('document');
-      },
-    });
+      pdf.addImage(imgData, 'PNG', 0, 0, 320, 220);
+      pdf.save('certificate.pdf');
+    }, 1000); // Adjust the delay as needed
 
     // pdf.addImage(imgData, 'PNG', 0, 0);
     // pdf.save('certificate.pdf');
@@ -94,6 +91,9 @@ function Certificate({ foundCertificate }) {
     const image4 = new Image();
     image4.src = ogtanlogo;
 
+    const image5 = new Image();
+    image5.src = isologo;
+
     Promise.all([
       new Promise((resolve) => {
         image1.onload = resolve;
@@ -106,6 +106,9 @@ function Certificate({ foundCertificate }) {
       }),
       new Promise((resolve) => {
         image4.onload = resolve;
+      }),
+      new Promise((resolve) => {
+        image5.onload = resolve;
       }),
     ]).then(() => {
       // All images loaded successfully.'
@@ -123,6 +126,7 @@ function Certificate({ foundCertificate }) {
       display: 'flex',
       width: '49%',
       backgroundColor: '#fff',
+      margin: 'auto',
     },
 
     sidedesign: {
@@ -148,18 +152,18 @@ function Certificate({ foundCertificate }) {
     },
 
     certName: {
-      fontSize: '0.5rem',
+      fontSize: '0.4rem',
       textTransform: 'uppercase',
       marginBottom: '0',
     },
 
     certTitle: {
-      fontSize: '5%',
+      fontSize: '0.4vw',
       fontWeight: 'bold',
     },
 
     certAwardedTo: {
-      fontSize: '3%',
+      fontSize: '0.3vw',
     },
 
     studName: {
@@ -184,16 +188,23 @@ function Certificate({ foundCertificate }) {
       fontSize: '0.3rem',
       justifyContent: 'center',
       alignItems: 'center',
+      gap: '10px',
     },
 
-    signature: {
-      width: '10%',
+    subpersonnel: {
+      display: 'block',
+    },
+
+    endorsement: {
+      width: '100%',
+      backgroundColor: 'red',
     },
 
     footer: {
       display: 'flex',
       margin: 'auto',
       marginTop: '0',
+      marginBottom: '0',
     },
 
     qrCodeCont: {
@@ -263,29 +274,29 @@ function Certificate({ foundCertificate }) {
                   <span>{formatDate(certificate[0].end_date)}</span>
                 </div>
                 <div style={styles.personnel}>
-                  <div>
-                    <img src={trainingdirector[0].signature} style={styles.signature} alt="sign" />
+                  <div style={styles.subpersonnel}>
+                    <img width="20" src={trainingdirector[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{trainingdirector[0].name}</p>
                     <p style={styles.personnelTitle}>Training Director</p>
                   </div>
-                  <div>
-                    <img src={traininginstructor[0].signature} style={styles.signature} alt="sign" />
+                  <div style={styles.subpersonnel}>
+                    <img width="20" src={traininginstructor[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{traininginstructor[0].name}</p>
                     <p style={styles.personnelTitle}>External Facilitator</p>
                   </div>
-                  <div>
-                    <img src={externalfacilitator[0].signature} style={styles.signature} alt="sign" />
+                  <div style={styles.subpersonnel}>
+                    <img width="20" src={externalfacilitator[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{externalfacilitator[0].name}</p>
                     <p style={styles.personnelTitle}>Training Director</p>
                   </div>
                 </div>
                 <div style={styles.footer}>
                   <div>
-                    <span><img src={ogtanlogo} ref={ogtanlogoRef} alt="ogtanlogo" style={styles.signature} /></span>
-                    <span><img src={isologo} alt="isologo" style={styles.signature} /></span>
+                    <img src={ogtanlogo} alt="ogtanlogo" style={styles.signatureImg} width="50" />
+                    <img src={isologo} alt="isologo" style={styles.signatureImg} width="50" />
                   </div>
                   <div style={styles.qrCodeCont}>
-                    <div style={styles.qrcode}><QRCode value={qrCodeData} size={40} /></div>
+                    <div style={styles.qrcode}><QRCode value={qrCodeData} size={20} /></div>
                     <p style={styles.certAwardedTo}>
                       ID:
                       <p style={styles.studNum}>{student[0].unique_number}</p>
