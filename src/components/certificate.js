@@ -123,7 +123,7 @@ function Certificate({ foundCertificate }) {
         // eslint-disable-next-line new-cap
         const pdf = new jsPDF({ orientation: 'landscape' });
         pdf.addImage(imgData, 'PNG', 0, 0, 320, 220);
-        pdf.save('certificate.pdf');
+        pdf.save('oilchemgrad.pdf');
       } catch (error) {
         console.error('Error generating PDF:', error);
       }
