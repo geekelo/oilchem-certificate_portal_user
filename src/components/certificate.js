@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import QRCode from 'qrcode.react';
 import { displayPersonnel } from '../redux/certificateSlice';
@@ -17,6 +17,7 @@ function Certificate({ foundCertificate }) {
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
   const certificateRef = useRef();
+  const ogtanlogoRef = useRef();
   const [imageLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
@@ -31,10 +32,17 @@ function Certificate({ foundCertificate }) {
     }
 
     const certificate = certificateRef.current;
+    const ogtanlogo2 = ogtanlogoRef.current;
 
     // Get the HTML content of the certificate
     // const certificateHTML = certificate.outerHTML;
 
+    const canvas = await html2canvas(ogtanlogo2, {
+      allowTaint: true,
+      useCORS: true,
+    });
+
+    const imgData = canvas.toDataURL('image/png');
     // eslint-disable-next-line new-cap
     const pdf = new jsPDF({
       orientation: 'landscape',
@@ -47,9 +55,13 @@ function Certificate({ foundCertificate }) {
     // Add the HTML content to the PDF
     pdf.html(certificate, {
       async callback(pdf) {
+        pdf.addImage(imgData, 'PNG', 0, 0);
         await pdf.save('document');
       },
     });
+
+    // pdf.addImage(imgData, 'PNG', 0, 0);
+    // pdf.save('certificate.pdf');
 
     // Save the PDF
     // pdf.save('certificate.pdf');
@@ -79,6 +91,9 @@ function Certificate({ foundCertificate }) {
     const image3 = new Image();
     image3.src = logo;
 
+    const image4 = new Image();
+    image4.src = ogtanlogo;
+
     Promise.all([
       new Promise((resolve) => {
         image1.onload = resolve;
@@ -89,6 +104,9 @@ function Certificate({ foundCertificate }) {
       new Promise((resolve) => {
         image3.onload = resolve;
       }),
+      new Promise((resolve) => {
+        image4.onload = resolve;
+      }),
     ]).then(() => {
       // All images loaded successfully.'
       setImagesLoaded(true);
@@ -97,143 +115,99 @@ function Certificate({ foundCertificate }) {
 
   const styles = {
     certificatecont: {
-      display: 'flex',
-      paddingRight: '5%',
-      width: '100%',
-      margin: 'auto',
-    },
-
-    certName: {
-      color: '#0d381e',
-      fontFamily: 'Montserrat, sans-serif',
-      fontWeight: 'bold',
-      textTransform: 'capitalize',
-      marginTop: 0,
-    },
-
-    studNum: {
-      textTransform: 'lowercase',
-    },
-
-    certLogo: {
-      position: 'relative',
-      top: '8%',
-      marginTop: '3%',
-      marginBottom: 0,
-    },
-
-    sideDesign: {
-      position: 'relative',
-      left: 0,
-      bottom: 0,
-      top: 0,
-      width: '50%',
       display: 'block',
+      paddingRight: '5%',
     },
 
     certificate: {
-      backgroundColor: '#fff',
       display: 'flex',
+      width: '49%',
+      backgroundColor: '#fff',
+    },
+
+    sidedesign: {
+      display: 'block',
+      margin: '0',
       width: '100%',
-      height: '100%',
-      gap: '5px',
+    },
+
+    sidedesignCont: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '20%',
+      gap: '0',
     },
 
     certDataSection: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-start',
+      textAlign: 'center',
+      justifyContent: 'center',
       alignItems: 'center',
-      width: '70%',
-      margin: 'auto',
+      width: '60%',
     },
 
-    certNameSection: {
-      position: 'relative',
-      top: '10%',
-      fontSize: '3%',
-      textTransform: 'capitalize',
-      margin: 0,
+    certName: {
+      fontSize: '0.5rem',
+      textTransform: 'uppercase',
+      marginBottom: '0',
     },
 
     certTitle: {
-      fontSize: '2.5%',
-      textTransform: 'uppercase',
-      margin: 0,
-      fontWeight: 900,
+      fontSize: '5%',
+      fontWeight: 'bold',
     },
 
     certAwardedTo: {
-      fontSize: '2%',
-      margin: '1% 0',
-      textAlign: 'center',
-      textTransform: 'capitalize',
-    },
-
-    certPurpose: {
-      fontSize: '1.5%',
-      margin: '1% 0',
-      textAlign: 'center',
-      textTransform: 'uppercase',
+      fontSize: '3%',
     },
 
     studName: {
-      fontSize: '4%',
-      fontWeight: 600,
-      margin: '0.7% 0',
-      display: 'flex',
-      borderBottom: '1px dotted #0d381e',
+      fontSize: '0.7vw',
+      borderBottom: '1px dotted #000',
+      marginTop: '1%',
+    },
+
+    certPurpose: {
+      fontSize: '0.35rem',
     },
 
     duration: {
-      fontSize: '2%',
-      marginTop: '1%',
+      fontWeight: 'bold',
+      display: 'flex',
+      fontSize: '0.3rem',
     },
 
     personnel: {
       display: 'flex',
-      gap: '10px',
+      flexDirection: 'row',
+      fontSize: '0.3rem',
+      justifyContent: 'center',
       alignItems: 'center',
-      marginTop: '2%',
-    },
-
-    personnelTitle: {
-      borderTop: '1px dotted #0d381e',
-      fontWeight: 'bold',
     },
 
     signature: {
-      display: 'block',
-      margin: 'auto',
+      width: '10%',
     },
 
-    partnersLogoCont: {
+    footer: {
       display: 'flex',
-      gap: '1%',
+      margin: 'auto',
+      marginTop: '0',
     },
 
     qrCodeCont: {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
-      gap: 0,
     },
 
-    qrCodeContP: {
-      margin: 0,
-    },
-
-    footer: {
-      display: 'flex',
-      gap: '15%',
-      marginTop: '1.5%',
-      justifyContent: 'flex-end',
-      fontWeight: 'bold',
+    studNum: {
+      fontSize: '0.5rem',
     },
 
     certVerify: {
-      fontSize: '0.7rem',
-      marginTop: '-0.5%',
+      fontSize: '0.3rem',
+      marginTop: '0',
     },
 
     downloadBtn: {
@@ -269,17 +243,17 @@ function Certificate({ foundCertificate }) {
     return (
       <div>
         <div>
-          <div className="certificate-cont">
-            <div id="canvas" size="A4" className="certificate" ref={certificateRef}>
-              <div>
-                <img src={sidedesign1} alt="sidedesign" width="80" style={styles.sideDesign} />
-                <img src={sidedesign2} alt="sidedesign" width="80" style={styles.sideDesign} />
+          <div style={styles.certificateCont}>
+            <div id="canvas" size="A4" style={styles.certificate} ref={certificateRef}>
+              <div style={styles.sidedesignCont}>
+                <img src={sidedesign1} alt="sidedesign" style={styles.sideDesign} />
+                <img src={sidedesign2} alt="sidedesign" style={styles.sideDesign} />
               </div>
               <div style={styles.certDataSection}>
-                <img src={logo} alt="logo" width="80" style={styles.certLogo} />
+                <img src={logo} alt="logo" width="30" style={styles.certLogo} />
                 <h2 style={styles.certName}>{certificate[0].name}</h2>
                 <p style={styles.certTitle}>{certificate[0].title}</p>
-                <p className="cert-awardedto">Certificate Awarded to:</p>
+                <p className="cert-awardedto" style={styles.certAwardedTo}>Certificate Awarded to:</p>
                 <p style={styles.studName}>{student[0].name}</p>
                 <p style={styles.certPurpose}>{certificate[0].purpose}</p>
                 <p style={styles.certTitle}>{certificate[0].course}</p>
@@ -290,28 +264,28 @@ function Certificate({ foundCertificate }) {
                 </div>
                 <div style={styles.personnel}>
                   <div>
-                    <img src={trainingdirector[0].signature} alt="sign" width="20" className="signature" />
+                    <img src={trainingdirector[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{trainingdirector[0].name}</p>
                     <p style={styles.personnelTitle}>Training Director</p>
                   </div>
                   <div>
-                    <img src={traininginstructor[0].signature} alt="sign" width="20" className="signature" />
+                    <img src={traininginstructor[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{traininginstructor[0].name}</p>
                     <p style={styles.personnelTitle}>External Facilitator</p>
                   </div>
                   <div>
-                    <img src={externalfacilitator[0].signature} alt="sign" width="20" className="signature" />
+                    <img src={externalfacilitator[0].signature} style={styles.signature} alt="sign" />
                     <p style={styles.certAwardedTo}>{externalfacilitator[0].name}</p>
                     <p style={styles.personnelTitle}>Training Director</p>
                   </div>
                 </div>
                 <div style={styles.footer}>
-                  <div className="partners-logo-cont">
-                    <span><img src={ogtanlogo} alt="ogtanlogo" width="35" className="signature" /></span>
-                    <span><img src={isologo} alt="isologo" width="40" className="signature" /></span>
+                  <div>
+                    <span><img src={ogtanlogo} ref={ogtanlogoRef} alt="ogtanlogo" style={styles.signature} /></span>
+                    <span><img src={isologo} alt="isologo" style={styles.signature} /></span>
                   </div>
                   <div style={styles.qrCodeCont}>
-                    <div className="qrcode"><QRCode value={qrCodeData} size={40} /></div>
+                    <div style={styles.qrcode}><QRCode value={qrCodeData} size={40} /></div>
                     <p style={styles.certAwardedTo}>
                       ID:
                       <p style={styles.studNum}>{student[0].unique_number}</p>
