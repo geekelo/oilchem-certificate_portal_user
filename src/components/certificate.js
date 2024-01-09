@@ -135,8 +135,8 @@ function Certificate({ foundCertificate }) {
           <div className="certificate-cont">
             <div className="certificate" ref={certificateRef}>
               <div className="side-design-cont">
-                <img src={sidedesign1} width="177" alt="sidedesign" className="side-design" />
-                <img src={sidedesign2} width="177" alt="sidedesign" className="side-design" />
+                <img src={sidedesign1} width="176.3" alt="sidedesign" className="side-design" />
+                <img src={sidedesign2} width="176.3" alt="sidedesign" className="side-design" />
               </div>
               <div className="cert-data-section">
                 <img src={logo} alt="logo" width="150" className="cert-logo" />
@@ -174,8 +174,8 @@ function Certificate({ foundCertificate }) {
                 </div>
                 <div className="footer">
                   <div className="partners-logo-cont">
-                    <span><img className="signature" src={ogtanlogo} alt="sign" width="35" /></span>
-                    <span><img className="signature" src={isologo} alt="sign" width="40" /></span>
+                    <span><img className="signature" src={ogtanlogo} alt="sign" width="50" /></span>
+                    <span><img className="signature" src={isologo} alt="sign" width="55" /></span>
                   </div>
                   <div className="qr-code-cont">
                     <div className="qrcode"><QRCode value={qrCodeData} size={60} /></div>

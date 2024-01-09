@@ -4,6 +4,7 @@
   display: flex;
   width: 200vh;
   margin: auto;
+  margin-top: 5%;
 }
 
 .cert-name {
@@ -35,7 +36,7 @@
   display: flex;
   width: 140vh;
   height: 90vh;
-  gap: 5px;
+  gap: 3px;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
   margin: auto;
@@ -48,7 +49,7 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin: auto;
   width: 80%;
   margin-left: -5%;
   font-weight: bold;
@@ -73,8 +74,8 @@
   margin: 1vh 0;
   text-align: center;
   text-transform: uppercase;
-  padding-right: 5%;
-  padding-left: 5%;
+  padding-right: 15%;
+  padding-left: 15%;
 }
 
 .stud-name {
