@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
@@ -17,52 +17,11 @@ function Certificate({ foundCertificate }) {
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
   const certificateRef = useRef();
-  const [imageLoaded, setImagesLoaded] = useState(false);
+  // const [imageLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(displayPersonnel());
   }, [dispatch]);
-
-  // CERTIFICTE CONVERTER AND DOWNLOADER
-  const downloadCertificate = async () => {
-    if (!imageLoaded) {
-      // Images are not loaded yet. Aborting download.'
-      return;
-    }
-
-    const certificate = certificateRef.current;
-
-    // Get the HTML content of the certificate
-    // const certificateHTML = certificate.outerHTML;
-    setTimeout(async () => {
-      const canvas = await html2canvas(certificate, {
-        allowTaint: true,
-        useCORS: true,
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-      // eslint-disable-next-line new-cap
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-      });
-
-      // pdf.html(certificate, {
-      //   async callback(pdf) {
-      //     pdf.addImage(imgData, 'PNG', 0, 0, 0, 0);
-      //     await pdf.save('document');
-      //   },
-      // });
-
-      pdf.addImage(imgData, 'PNG', 0, 0, 320, 220);
-      pdf.save('certificate.pdf');
-    }, 1000); // Adjust the delay as needed
-
-    // pdf.addImage(imgData, 'PNG', 0, 0);
-    // pdf.save('certificate.pdf');
-
-    // Save the PDF
-    // pdf.save('certificate.pdf');
-  };
 
   // DATE FORMATTER
   const formatDate = (inputDate) => {
@@ -78,166 +37,31 @@ function Certificate({ foundCertificate }) {
   };
 
   // ENSURE ALL IMAGES ARE LOADED
-  useEffect(() => {
-    const image1 = new Image();
-    image1.src = sidedesign1;
+  // useEffect(() => {
+  //   const image1 = new Image();
+  //   image1.src = sidedesign1;
 
-    const image2 = new Image();
-    image2.src = sidedesign2;
+  //   const image2 = new Image();
+  //   image2.src = sidedesign2;
 
-    const image3 = new Image();
-    image3.src = logo;
+  //   const image3 = new Image();
+  //   image3.src = logo;
 
-    const image4 = new Image();
-    image4.src = ogtanlogo;
-
-    const image5 = new Image();
-    image5.src = isologo;
-
-    Promise.all([
-      new Promise((resolve) => {
-        image1.onload = resolve;
-      }),
-      new Promise((resolve) => {
-        image2.onload = resolve;
-      }),
-      new Promise((resolve) => {
-        image3.onload = resolve;
-      }),
-      new Promise((resolve) => {
-        image4.onload = resolve;
-      }),
-      new Promise((resolve) => {
-        image5.onload = resolve;
-      }),
-    ]).then(() => {
-      // All images loaded successfully.'
-      setImagesLoaded(true);
-    });
-  }, []);
-
-  const styles = {
-    certificatecont: {
-      display: 'block',
-      paddingRight: '5%',
-    },
-
-    certificate: {
-      display: 'flex',
-      width: '49%',
-      backgroundColor: '#fff',
-      margin: 'auto',
-    },
-
-    sidedesign: {
-      display: 'block',
-      margin: '0',
-      width: '100%',
-    },
-
-    sidedesignCont: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '20%',
-      gap: '0',
-    },
-
-    certDataSection: {
-      display: 'flex',
-      flexDirection: 'column',
-      textAlign: 'center',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '60%',
-    },
-
-    certName: {
-      fontSize: '0.4rem',
-      textTransform: 'uppercase',
-      marginBottom: '0',
-    },
-
-    certTitle: {
-      fontSize: '0.4vw',
-      fontWeight: 'bold',
-    },
-
-    certAwardedTo: {
-      fontSize: '0.3vw',
-    },
-
-    studName: {
-      fontSize: '0.7vw',
-      borderBottom: '1px dotted #000',
-      marginTop: '1%',
-    },
-
-    certPurpose: {
-      fontSize: '0.35rem',
-    },
-
-    duration: {
-      fontWeight: 'bold',
-      display: 'flex',
-      fontSize: '0.3rem',
-    },
-
-    personnel: {
-      display: 'flex',
-      flexDirection: 'row',
-      fontSize: '0.3rem',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '10px',
-    },
-
-    subpersonnel: {
-      display: 'block',
-    },
-
-    endorsement: {
-      width: '100%',
-      backgroundColor: 'red',
-    },
-
-    footer: {
-      display: 'flex',
-      margin: 'auto',
-      marginTop: '0',
-      marginBottom: '0',
-    },
-
-    qrCodeCont: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-
-    studNum: {
-      fontSize: '0.5rem',
-    },
-
-    certVerify: {
-      fontSize: '0.3rem',
-      marginTop: '0',
-    },
-
-    downloadBtn: {
-      backgroundColor: '#0d381e1d',
-      margin: 'auto',
-      color: '#fff',
-      display: 'block',
-      marginTop: '2%',
-      borderRadius: '2%',
-      border: 'none',
-      padding: '1rem',
-      fontWeight: 'bold',
-      fontFamily: 'Montserrat, Arial',
-    },
-
-    downloadBtnHover: {
-      backgroundColor: '#07672d1d',
-    },
-  };
+  //   Promise.all([
+  //     new Promise((resolve) => {
+  //       image1.onload = resolve;
+  //     }),
+  //     new Promise((resolve) => {
+  //       image2.onload = resolve;
+  //     }),
+  //     new Promise((resolve) => {
+  //       image3.onload = resolve;
+  //     }),
+  //   ]).then(() => {
+  //     // All images loaded successfully.'
+  //     setImagesLoaded(true);
+  //   });
+  // }, []);
 
   if (personnel) {
     const trainingdirector = personnel
@@ -251,66 +75,122 @@ function Certificate({ foundCertificate }) {
 
     const qrCodeData = `${certificate[0].name}, ${student[0].name}, ${student[0].unique_number}`;
 
+    // CERTIFICTE CONVERTER AND DOWNLOADER
+    const downloadCertificate = async () => {
+      // if (!imageLoaded) {
+      //   // Images are not loaded yet. Aborting download.'
+      //   return;
+      // }
+
+      const image1 = new Image();
+      image1.src = sidedesign1;
+
+      const image2 = new Image();
+      image2.src = sidedesign2;
+
+      const image3 = new Image();
+      image3.src = logo;
+
+      const image4 = new Image();
+      image4.src = externalfacilitator[0].signature;
+
+      await Promise.all([
+        new Promise((resolve) => {
+          image1.onload = resolve;
+        }),
+        new Promise((resolve) => {
+          image2.onload = resolve;
+        }),
+        new Promise((resolve) => {
+          image3.onload = resolve;
+        }),
+        new Promise((resolve) => {
+          image4.onload = resolve;
+        }),
+      ]);
+
+      const certificate = certificateRef.current;
+
+      try {
+        const canvas = await html2canvas(certificate, {
+          allowTaint: true,
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+        });
+
+        const imgData = canvas.toDataURL('image/png');
+        // eslint-disable-next-line new-cap
+        const pdf = new jsPDF({ orientation: 'landscape' });
+        pdf.addImage(imgData, 'PNG', 0, 0, 320, 220);
+        pdf.save('certificate.pdf');
+      } catch (error) {
+        console.error('Error generating PDF:', error);
+      }
+    };
+
     return (
       <div>
         <div>
-          <div style={styles.certificateCont}>
-            <div id="canvas" size="A4" style={styles.certificate} ref={certificateRef}>
-              <div style={styles.sidedesignCont}>
-                <img src={sidedesign1} alt="sidedesign" style={styles.sideDesign} />
-                <img src={sidedesign2} alt="sidedesign" style={styles.sideDesign} />
+          <div className="certificate-cont">
+            <div className="certificate" ref={certificateRef}>
+              <div className="side-design-cont">
+                <img src={sidedesign1} width="177" alt="sidedesign" className="side-design" />
+                <img src={sidedesign2} width="177" alt="sidedesign" className="side-design" />
               </div>
-              <div style={styles.certDataSection}>
-                <img src={logo} alt="logo" width="30" style={styles.certLogo} />
-                <h2 style={styles.certName}>{certificate[0].name}</h2>
-                <p style={styles.certTitle}>{certificate[0].title}</p>
-                <p className="cert-awardedto" style={styles.certAwardedTo}>Certificate Awarded to:</p>
-                <p style={styles.studName}>{student[0].name}</p>
-                <p style={styles.certPurpose}>{certificate[0].purpose}</p>
-                <p style={styles.certTitle}>{certificate[0].course}</p>
-                <div style={styles.duration}>
-                  <span>{formatDate(certificate[0].start_date)}</span>
+              <div className="cert-data-section">
+                <img src={logo} alt="logo" width="150" className="cert-logo" />
+                <h2 className="cert-name">{certificate[0].name}</h2>
+                <p className="cert-title">{certificate[0].title}</p>
+                <p className="cert-awardedto">Certificate Awarded to:</p>
+                <p className="stud-name">{student[0].name}</p>
+                <p className="cert-purpose">{certificate[0].purpose}</p>
+                <p className="cert-title">{certificate[0].course}</p>
+                <div className="duration">
+                  <span>
+                    {formatDate(certificate[0].start_date)}
+                  </span>
                   <span> - </span>
-                  <span>{formatDate(certificate[0].end_date)}</span>
+                  <span>
+                    {formatDate(certificate[0].end_date)}
+                  </span>
                 </div>
-                <div style={styles.personnel}>
-                  <div style={styles.subpersonnel}>
-                    <img width="20" src={trainingdirector[0].signature} style={styles.signature} alt="sign" />
-                    <p style={styles.certAwardedTo}>{trainingdirector[0].name}</p>
-                    <p style={styles.personnelTitle}>Training Director</p>
-                  </div>
-                  <div style={styles.subpersonnel}>
-                    <img width="20" src={traininginstructor[0].signature} style={styles.signature} alt="sign" />
-                    <p style={styles.certAwardedTo}>{traininginstructor[0].name}</p>
-                    <p style={styles.personnelTitle}>External Facilitator</p>
-                  </div>
-                  <div style={styles.subpersonnel}>
-                    <img width="20" src={externalfacilitator[0].signature} style={styles.signature} alt="sign" />
-                    <p style={styles.certAwardedTo}>{externalfacilitator[0].name}</p>
-                    <p style={styles.personnelTitle}>Training Director</p>
-                  </div>
-                </div>
-                <div style={styles.footer}>
+                <div className="personnel">
                   <div>
-                    <img src={ogtanlogo} alt="ogtanlogo" style={styles.signatureImg} width="50" />
-                    <img src={isologo} alt="isologo" style={styles.signatureImg} width="50" />
+                    <img className="personnel-signature" src={trainingdirector[0].signature} alt="sign" width="50" />
+                    <p className="cert-awardedto">{trainingdirector[0].name}</p>
+                    <p className="cert-awardedto personnel-title">Training Director</p>
                   </div>
-                  <div style={styles.qrCodeCont}>
-                    <div style={styles.qrcode}><QRCode value={qrCodeData} size={20} /></div>
-                    <p style={styles.certAwardedTo}>
-                      ID:
-                      <p style={styles.studNum}>{student[0].unique_number}</p>
+                  <div>
+                    <img className="personnel-signature" src={traininginstructor[0].signature} alt="sign" width="50" />
+                    <p className="cert-awardedto">{traininginstructor[0].name}</p>
+                    <p className="cert-awardedto personnel-title">External Facilitator</p>
+                  </div>
+                  <div>
+                    <img className="personnel-signature" src={externalfacilitator[0].signature} alt="sign" width="50" />
+                    <p className="cert-awardedto">{externalfacilitator[0].name}</p>
+                    <p className="cert-awardedto personnel-title">Training Director</p>
+                  </div>
+                </div>
+                <div className="footer">
+                  <div className="partners-logo-cont">
+                    <span><img className="signature" src={ogtanlogo} alt="sign" width="35" /></span>
+                    <span><img className="signature" src={isologo} alt="sign" width="40" /></span>
+                  </div>
+                  <div className="qr-code-cont">
+                    <div className="qrcode"><QRCode value={qrCodeData} size={60} /></div>
+                    <p className="cert-awardedto">
+                      ID:&nbsp;
+                      <span className="cert-num">{student[0].unique_number}</span>
                     </p>
                   </div>
                 </div>
-                <p style={styles.certVerify}>
-                  Verify certificate ID @ oilchemmudschool.com/certificates
-                </p>
+                <p className="cert-verify">Verify certificate ID @ verify.oilchemmudschool.com</p>
               </div>
             </div>
           </div>
 
-          <button style={styles.downloadBtn} type="submit" onClick={downloadCertificate}>⤓ Download Certificate</button>
+          <button className="download-btn" type="submit" onClick={downloadCertificate}> ⤓ Download Certificate</button>
         </div>
       </div>
     );
