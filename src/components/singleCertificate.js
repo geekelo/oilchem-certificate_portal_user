@@ -61,7 +61,6 @@ function SingleCertificate() {
           Link to Certificate -
           <CopyButton textToCopy={fullURL} />
         </div>
-        <br />
         <Certificate foundCertificate={foundCertificate} />
       </div>
     );
