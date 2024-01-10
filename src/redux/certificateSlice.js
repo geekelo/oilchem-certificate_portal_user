@@ -14,7 +14,7 @@ export const displayCertificates = createAsyncThunk(
   'user/display_certificates',
   async () => {
     try {
-      const response = await fetch('https://oilchem-api.onrender.com/api/v1/certificates', {
+      const response = await fetch('https://oilchem-api-prod.onrender.com/api/v1/certificates', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
