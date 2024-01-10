@@ -5,6 +5,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { displayCertificates, displayPersonnel, displayStudents } from '../redux/certificateSlice';
 import Certificate from './certificate';
 import CopyButton from './copyBtn';
+import spinner from '../assets/rippleloader.gif';
 import '../stylesheets/notFound.css';
 
 function SingleCertificate() {
@@ -46,7 +47,7 @@ function SingleCertificate() {
     setStudentId(id);
   }, [dispatch]);
 
-  if (pageNotFound > 2) {
+  if (pageNotFound > 3) {
     navigate('/404');
   }
 
@@ -60,11 +61,25 @@ function SingleCertificate() {
           Link to Certificate -
           <CopyButton textToCopy={fullURL} />
         </div>
-        <br />
         <Certificate foundCertificate={foundCertificate} />
       </div>
     );
   }
+  return (
+    <div className="table-cont">
+      <div className="flex-container loader">
+        <div className="loader">
+          <img src={spinner} alt="spinner" width="300" />
+        </div>
+        <p>
+          CHECKING...
+        </p>
+      </div>
+      <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
+        <AiFillHome className="menu-icon" />
+      </NavLink>
+    </div>
+  );
 }
 
 export default SingleCertificate;

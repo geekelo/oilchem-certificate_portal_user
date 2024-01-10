@@ -19,3 +19,30 @@
   font-family: 'Montserrat', cursive;
   font-size: 3rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .header {
+    padding-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .notification {
+    text-align: center;
+  }
+
+  .header-name {
+    font-family: 'Montserrat';
+    font-weight: bold;
+  }
+
+  .header-title {
+    margin-top: 1vh;
+    font-family: 'Montserrat', cursive;
+    font-size: 1.5rem;
+  }
+}
+
