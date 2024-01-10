@@ -178,7 +178,8 @@ function Certificate({ foundCertificate }) {
                     <span><img className="signature" src={isologo} alt="sign" width="55" /></span>
                   </div>
                   <div className="qr-code-cont">
-                    <div className="qrcode"><QRCode value={qrCodeData} size={60} /></div>
+                    <div className="qrcode-desktop"><QRCode value={qrCodeData} size={60} /></div>
+                    <div className="qrcode-mobile"><QRCode value={qrCodeData} size={25} /></div>
                     <p className="cert-awardedto">
                       ID:&nbsp;
                       <span className="cert-num">{student[0].unique_number}</span>

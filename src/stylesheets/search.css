@@ -62,26 +62,26 @@ input {
   padding: 0.2rem 0.5rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 325px) and (max-width: 1024px) {
   input {
-    width: 30%;
-    height: 4vh;
-    border-radius: 2rem;
+    width: 60%;
+    height: 2vh;
+    border-radius: 3rem;
     border: 1px solid #0d381e;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     font-size: 0.7rem;
   }
   
   .search-btn {
     background-color: rgb(14, 57, 26);
     border-radius: 2rem;
-    height: 5vh;
-    width: 15%;
+    height: 4vh;
+    width: 40%;
     color: #fff;
     border: none;
     font-family: 'Montserrat', 'Arial';
     font-weight: bold;
-    padding: 0.4rem;
+    padding: 0.6rem;
     font-size: 0.6rem;
   }
   
@@ -91,13 +91,13 @@ input {
     gap: 10px;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 80%;
     margin: auto;
   }
   
   .search {
     display: flex;
-    width: 90vh;
+    width: 90%;
     gap: 5px;
     margin: 0;
     justify-content: center;
