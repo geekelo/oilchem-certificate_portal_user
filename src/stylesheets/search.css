@@ -1,0 +1,132 @@
+
+input {
+  width: 70%;
+  height: 10vh;
+  border-radius: 2rem;
+  border: 1px solid #0d381e;
+  padding-left: 2rem;
+  font-size: 1rem;
+}
+
+.search-btn {
+  background-color: rgb(14, 57, 26);
+  border-radius: 2rem;
+  height: 10vh;
+  width: 20%;
+  color: #fff;
+  border: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.search-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+  width: 90vh;
+  gap: 5px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6vh;
+}
+
+.notification {
+  background-color: #090b0a11;
+  padding: 0.2rem;
+  font-weight: 800;
+  font-family: 'Lato', Arial, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.noNotification {
+  background-color: #fff0;
+}
+
+.copybtnSection {
+  display: inline;
+}
+
+.copybtn {
+  border: none;
+  box-shadow: 2px 2px 2px #0d381e;
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+}
+
+@media only screen and (min-width: 325px) and (max-width: 1024px) {
+  input {
+    width: 60%;
+    height: 4vh;
+    border-radius: 3rem;
+    border: 1px solid #0d381e;
+    padding-left: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .search-btn {
+    background-color: rgb(14, 57, 26);
+    border-radius: 2rem;
+    height: 4vh;
+    width: 30%;
+    color: #fff;
+    border: none;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: bold;
+    padding: 0.3rem;
+    font-size: 0.6rem;
+  }
+
+  .search-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+  }
+
+  .search {
+    display: flex;
+    width: 90%;
+    gap: 5px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6vh;
+  }
+
+  .notification {
+    background-color: #090b0a11;
+    padding: 0.2rem;
+    font-weight: 800;
+    font-family: 'Lato', Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
+  .noNotification {
+    background-color: #fff0;
+  }
+
+  .copybtnSection {
+    display: inline;
+  }
+
+  .copybtn {
+    border: none;
+    box-shadow: 2px 2px 2px #0d381e;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+  }
+}
