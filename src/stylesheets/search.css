@@ -65,7 +65,7 @@ input {
 @media only screen and (min-width: 325px) and (max-width: 1024px) {
   input {
     width: 60%;
-    height: 2vh;
+    height: 4vh;
     border-radius: 3rem;
     border: 1px solid #0d381e;
     padding-left: 0.5rem;
@@ -76,19 +76,19 @@ input {
     background-color: rgb(14, 57, 26);
     border-radius: 2rem;
     height: 4vh;
-    width: 40%;
+    width: 30%;
     color: #fff;
     border: none;
     font-family: 'Montserrat', 'Arial';
     font-weight: bold;
-    padding: 0.6rem;
+    padding: 0.3rem;
     font-size: 0.6rem;
   }
   
   .search-cont {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -113,7 +113,7 @@ input {
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-  }
+    }
   
   .noNotification {
     background-color: #ffffff00;
