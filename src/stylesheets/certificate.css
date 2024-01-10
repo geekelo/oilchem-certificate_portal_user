@@ -157,3 +157,164 @@
 .download-btn:hover {
   background-color: #07672d1d;
 }
+
+@media only screen and (max-width: 768px) {
+  .certificate-cont {
+    display: flex;
+    width: 200vh;
+    margin: auto;
+  }
+
+  .cert-name {
+    color: #0d381e;
+    font-size: 1.8rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .stud-num {
+    text-transform: lowercase;
+  }
+
+  .side-design-cont {
+    width: 40%;
+  }
+
+  .side-design {
+    display: flex;
+    flex-direction: column;
+    image-resolution: 300dpi;
+    width: 20%;
+  }
+
+  .certificate {
+    background-color: #fff;
+    display: flex;
+    width: 140vh;
+    height: 90vh;
+    gap: 3px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    margin: auto;
+  }
+
+  .cert-data-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin: auto;
+    width: 80%;
+    margin-left: -5%;
+    font-weight: bold;
+  }
+
+  .cert-title {
+    font-size: 3vh;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 900;
+  }
+
+  .cert-awardedto {
+    font-size: 3vh;
+    margin: 1vh 0;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .cert-purpose {
+    font-size: 0.8rem;
+    margin: 1vh 0;
+    text-align: center;
+    text-transform: uppercase;
+    padding-right: 15%;
+    padding-left: 15%;
+  }
+
+  .stud-name {
+    font-size: 4vh;
+    font-weight: 600;
+    margin: 0.7vh 0;
+    display: flex;
+    border-bottom: 2px solid #0d381e;
+  }
+
+  .duration {
+    font-size: 2vh;
+    margin-top: 1vh;
+  }
+
+  .personnel {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .personnel-title {
+    border-top: 2px solid #0d381e;
+    font-weight: bold;
+  }
+
+  .signature {
+    display: block;
+    margin: auto;
+  }
+
+  .partners-logo-cont {
+    display: flex;
+    gap: 5vh;
+  }
+
+  .qr-code-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .qr-code-cont > p {
+    margin: 0;
+  }
+
+  .cert-num {
+    text-transform: lowercase;
+  }
+
+  .footer {
+    display: flex;
+    gap: 15vh;
+    margin-top: 1.5vh;
+    justify-content: flex-end;
+    font-weight: bold;
+  }
+
+  .cert-verify {
+    font-size: 0.7rem;
+    margin-top: -0.5vh;
+  }
+
+  .download-btn {
+    background-color: #0d381e1d;
+    margin: auto;
+    color: #fff;
+    display: block;
+    margin-top: 2vh;
+    border-radius: 2vh;
+    border: none;
+    padding: 1rem;
+    color: #0d381e;
+    font-weight: bold;
+    font-family: "Montserrat", "Arial";
+  }
+
+  .download-btn:hover {
+    background-color: #07672d1d;
+  }
+}

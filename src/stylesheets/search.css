@@ -61,3 +61,72 @@ input {
   border-radius: 12px;
   padding: 0.2rem 0.5rem;
 }
+
+@media only screen and (max-width: 768px) {
+  input {
+    width: 30%;
+    height: 4vh;
+    border-radius: 2rem;
+    border: 1px solid #0d381e;
+    padding-left: 1rem;
+    font-size: 0.7rem;
+  }
+  
+  .search-btn {
+    background-color: rgb(14, 57, 26);
+    border-radius: 2rem;
+    height: 5vh;
+    width: 15%;
+    color: #fff;
+    border: none;
+    font-family: 'Montserrat', 'Arial';
+    font-weight: bold;
+    padding: 0.4rem;
+    font-size: 0.6rem;
+  }
+  
+  .search-cont {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .search {
+    display: flex;
+    width: 90vh;
+    gap: 5px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6vh;
+  }
+  
+  .notification {
+    background-color: #090b0a11;
+    padding: 0.2rem;
+    font-weight: 800;
+    font-family: 'Lato', 'Arial';
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+  
+  .noNotification {
+    background-color: #ffffff00;
+  }
+  
+  .copybtnSection {
+    display: inline;
+  }
+  
+  .copybtn{
+    border: none;
+    box-shadow: 2px 2px 2px #0d381e;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+  }
+}
