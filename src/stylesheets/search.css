@@ -15,7 +15,7 @@ input {
   width: 20%;
   color: #fff;
   border: none;
-  font-family: 'Montserrat', 'Arial';
+  font-family: 'Montserrat', Arial;
   font-weight: bold;
 }
 
@@ -41,21 +41,21 @@ input {
   background-color: #090b0a11;
   padding: 0.2rem;
   font-weight: 800;
-  font-family: 'Lato', 'Arial';
+  font-family: 'Lato', Arial;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
 }
 
 .noNotification {
-  background-color: #ffffff00;
+  background-color: #fff0;
 }
 
 .copybtnSection {
   display: inline;
 }
 
-.copybtn{
+.copybtn {
   border: none;
   box-shadow: 2px 2px 2px #0d381e;
   border-radius: 12px;
@@ -71,7 +71,7 @@ input {
     padding-left: 1rem;
     font-size: 0.7rem;
   }
-  
+
   .search-btn {
     background-color: rgb(14, 57, 26);
     border-radius: 2rem;
@@ -79,12 +79,12 @@ input {
     width: 30%;
     color: #fff;
     border: none;
-    font-family: 'Montserrat', 'Arial';
+    font-family: 'Montserrat', Arial;
     font-weight: bold;
     padding: 0.3rem;
     font-size: 0.6rem;
   }
-  
+
   .search-cont {
     display: flex;
     flex-direction: column;
@@ -94,7 +94,7 @@ input {
     width: 80%;
     margin: auto;
   }
-  
+
   .search {
     display: flex;
     width: 90%;
@@ -104,26 +104,26 @@ input {
     align-items: center;
     margin-bottom: 6vh;
   }
-  
+
   .notification {
     background-color: #090b0a11;
     padding: 0.2rem;
     font-weight: 800;
-    font-family: 'Lato', 'Arial';
+    font-family: 'Lato', Arial;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
     }
-  
+
   .noNotification {
-    background-color: #ffffff00;
+    background-color: #fff0;
   }
-  
+
   .copybtnSection {
     display: inline;
   }
-  
-  .copybtn{
+
+  .copybtn {
     border: none;
     box-shadow: 2px 2px 2px #0d381e;
     border-radius: 12px;
