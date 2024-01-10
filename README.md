@@ -1,71 +1,174 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ <img src="https://geekelo.com.ng/wp-content/uploads/2023/12/signature.gif" alt="signature" >
+  
+  <br/>
 
-## Available Scripts
+</div>
+<!-- TABLE OF CONTENTS -->
 
-In the project directory, you can run:
+# 📗 Table of Contents
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 LMW Webpage ](#-lmw-webpage-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Setup ](#setup-)
+    - [Prerequisites ](#prerequisites-)
+    <!-- - [Install ](#install-) -->
+    - [Usage ](#usage-)
+    <!-- - [Run Tests ](#run-tests-)
+    - [Deployment ](#deployment-) -->
+  - [👥 Authors ](#-authors-)
+  - [🤝 Contributing ](#-contributing-)
+  - [Future Features ](#future-features-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [📝 License ](#-license-)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- PROJECT DESCRIPTION -->
 
-### `npm test`
+<div align="center">
+  <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The `CERTIFICATE VERIFIER - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the certificate verification side for the Oilchem certificate portal web application. It provides a user interface and interacts with the Rails Backend API only app to converts certificate details to a well desiged and downloadable certificate (with qrcode). 
 
-### `npm run build`
+Students can check if their certificate has been issued by entering their unique numbers. If found, a graphically downloadable certificate displays.Students can also copy direct links to their certificates.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Employers can check and verify certificate IDs. If found, a graphically downloadable certificate displays.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The aim of this project is to provide a effective  solution to enable the Oilchem Mud School students and potential employers digitally verify certificates of job applicants from Oilchem Mud School 📚
 
-### `npm run eject`
+This project comprises of -
+- [Rails Backend API only App](https://github.com/geekelo/oilchem-certificate_portal_api) - manages postgresql database and CRUD methods
+- [React CMS](https://github.com/geekelo/oilchem-certificate_portal_admin) - provides user interfaces to admins for effective cotent management
+- [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability of and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Live Demo <a name="live-demo"></a>
+  - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng)
+  - [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
+  - [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠 Built With <a name="built-with"></a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  <ul>
+    <li>React</li>
+    <li>Redux</li>
+    <li>CSS</li>
+  </ul>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Features -->
 
-## Learn More
+### Key Features <a name="key-features"></a>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [x] **React-Based User Interface**
+- [x] **Modular Structure**
+- [x] **Create, read, update and delete features for certificates, students, personnel and batch**
+- [x] **Navigation**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Kanban Board:
+  [Kanban-board](https://github.com/users/geekelo/projects/4)<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Team:
+This is a solo project
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Getting Started <a name="getting-started"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To get a local copy up and running, follow these steps.
 
-### Advanced Configuration
+### Prerequisites <a name="prerequisites"></a>
+In order to run this project you need:
+  * A basic understanding of React, Redux and Git
+### Usage <a name="usage"></a>
+1. Clone this repo
+2. Run npm install
+```
+git clone https://github.com/geekelo/oilchem-certificate_portal_user.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To run the project, execute the following command:
 
-### Deployment
+```
+  npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run build` fails to minify
+<!-- AUTHORS -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# oilchem-certificate_portal_user
+## 👥 Authors <a name="authors"></a>
+
+👤 **Eloghene Otiede**
+
+- GitHub: [@geekelo](https://github.com/geekelo)
+- LinkedIn: [eloghene-otiede](https://www.linkedin.com/in/eloghene-otiede-b146a3232/)
+- Website: [portfolio](https://geekelo.com.ng/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **Edit Admin Profile**
+- [ ] **Super Admin management**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## ⭐️ Show your support <a name="support"></a>
+
+Please support this project and be a part of something meaningful and impactful. Your contribution can make a significant difference and help us achieve our goals faster.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to express my sincere gratitude to [Eloti Designs](https://elotidesigns.com) for trsting my competence in executing this project for their client OILCHEM MUD SCHOOL
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## :question: FAQ <a name="faq"></a>
+
+- **Can I fork and reuse this repository?**
+
+Absolutely! Please feel free to fork and reuse this repository for your own projects.
+
+- **Is it okay to improve this repository? Will my changes be accepted?**
+
+Definitely! We welcome any improvements or new ideas you may have. If your changes are good and align with the project's goals, we would be happy to accept them.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENCE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
