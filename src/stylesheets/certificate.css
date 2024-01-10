@@ -4,6 +4,7 @@
   display: flex;
   width: 200vh;
   margin: auto;
+  overflow: scroll;
 }
 
 .cert-name {
@@ -171,6 +172,7 @@
     width: 50vh;
     height: 40vh;
     margin: auto;
+    overflow: scroll;
   }
 
   .cert-logo {
