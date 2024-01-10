@@ -15,7 +15,7 @@ input {
   width: 20%;
   color: #fff;
   border: none;
-  font-family: 'Montserrat', Arial;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -41,7 +41,7 @@ input {
   background-color: #090b0a11;
   padding: 0.2rem;
   font-weight: 800;
-  font-family: 'Lato', Arial;
+  font-family: 'Lato', Arial, sans-serif;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
@@ -79,7 +79,7 @@ input {
     width: 30%;
     color: #fff;
     border: none;
-    font-family: 'Montserrat', Arial;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: bold;
     padding: 0.3rem;
     font-size: 0.6rem;
@@ -109,11 +109,11 @@ input {
     background-color: #090b0a11;
     padding: 0.2rem;
     font-weight: 800;
-    font-family: 'Lato', Arial;
+    font-family: 'Lato', Arial, sans-serif;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    }
+  }
 
   .noNotification {
     background-color: #fff0;

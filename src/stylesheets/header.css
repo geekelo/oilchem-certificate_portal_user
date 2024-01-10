@@ -41,7 +41,7 @@
 
   .header-title {
     margin-top: 1vh;
-    font-family: 'Montserrat', cursive;
+    font-family: 'Montserrat', cursive, sans-serif;
     font-size: 1.5rem;
   }
 }

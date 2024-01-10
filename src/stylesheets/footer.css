@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', Arial;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
   font-size: 1rem;
 }

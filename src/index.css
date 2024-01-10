@@ -11,10 +11,11 @@ body {
   justify-content: center;
   gap: 20px;
   opacity: 0.8;
-  background-image: repeating-radial-gradient(
+  background-image:
+    repeating-radial-gradient(
       circle at 0 0,
       transparent 0,
-      #ffffff 10px
+      #fff 10px
     ),
     repeating-linear-gradient(#c5decb55, #c5decb);
 }
@@ -22,7 +23,7 @@ body {
 @media only screen and (min-width: 325px) and (max-width: 1024px) {
   body {
     padding-bottom: 30vh;
+
     /* other tablet styles */
   }
 }
-
