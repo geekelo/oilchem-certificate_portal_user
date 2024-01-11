@@ -35,27 +35,28 @@
 ![Screenshot from 2024-01-11 02-53-01](https://github.com/geekelo/oilchem-certificate_portal_user/assets/102464578/3d8a431c-c866-48ab-8c54-181de484c123)
 
 <div align="center">
-  <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
+  <h1>📖 VERIFIER - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
 </div>
 
-The `CERTIFICATE VERIFIER - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the certificate verification side for the Oilchem certificate portal web application. It provides a user interface and interacts with the Rails Backend API only app to converts certificate details to a well desiged and downloadable certificate (with qrcode). 
+The `CERTIFICATE VERIFIER - OILCHEM MUD SCHOOL CERTIFICATE PORTAL` project is a web application developed using the React JavaScript library. It serves as the certificate verification side for the Oilchem certificate portal web application. It provides a user interface and interacts with the Rails Backend API-only app to convert certificate details to a well-designed and downloadable certificate (with qrcode). 
 
-Students can check if their certificate has been issued by entering their unique numbers. If found, a graphically downloadable certificate displays.Students can also copy direct links to their certificates.
+Students can check if their certificate has been issued by entering their unique numbers. If found, a graphically downloadable certificate displays. Students can also copy direct links to their certificates.
 
 Employers can check and verify certificate IDs. If found, a graphically downloadable certificate displays.
 
 
-The aim of this project is to provide a effective  solution to enable the Oilchem Mud School students and potential employers digitally verify certificates of job applicants from Oilchem Mud School 📚
+This project aims to provide an effective  solution to enable the Oilchem Mud School students and potential employers to digitally verify certificates of job applicants from Oilchem Mud School 📚
 
 This project comprises of -
-- [Rails Backend API only App](https://github.com/geekelo/oilchem-certificate_portal_api) - manages postgresql database and CRUD methods
-- [React CMS](https://github.com/geekelo/oilchem-certificate_portal_admin) - provides user interfaces to admins for effective cotent management
-- [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability of and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This Applicaion is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
+- [Rails Backend API only App](https://github.com/geekelo/oilchem-certificate_portal_api) - manages PostgreSQL database and CRUD methods
+- [React CMS](https://github.com/geekelo/oilchem-certificate_portal_admin) - provides user interfaces to admins for effective content management
+- [React Certificate Verification Portal](https://github.com/geekelo/oilchem-certificate_portal_user) - provides an interface for students to check the availability of and download their certificates. Also providing employees an interface to authenticate and verify certificate IDs. This application is connected to the backend application and converts the details to a graphically designed and downloadable certificate.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
   - [Admin/CMS Demo Link](https://oilchem-certificate-portal-admin.geekelo.com.ng)
   - [User/portal Demo Link](https://oilchem-certificate-portal-user.geekelo.com.ng)
   - [Api Docs Demo Link](https://oilchem-api.onrender.com/api-docs)
+  - [Video Presentation](https://youtu.be/4pFrIFyQq98)
 
 ## 🛠 Built With <a name="built-with"></a>
 
