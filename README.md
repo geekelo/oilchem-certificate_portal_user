@@ -32,6 +32,7 @@
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
+![Screenshot from 2024-01-11 02-53-01](https://github.com/geekelo/oilchem-certificate_portal_user/assets/102464578/3d8a431c-c866-48ab-8c54-181de484c123)
 
 <div align="center">
   <h1>📖 CMS - OILCHEM MUD SCHOOL CERTIFICATE PORTAL </h>
