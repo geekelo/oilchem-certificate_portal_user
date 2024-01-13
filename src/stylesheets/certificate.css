@@ -2,7 +2,7 @@
 
 .certificate-cont {
   display: flex;
-  width: 200vh;
+  width: 250vh;
   margin: auto;
   overflow-y: hidden;
 }
@@ -35,7 +35,6 @@
   background-color: #fff;
   display: flex;
   width: 140vh;
-  height: 90vh;
   gap: 3px;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
@@ -170,7 +169,7 @@
   .certificate-cont {
     display: flex;
     width: 50vh;
-    height: 40vh;
+    height: 50vh;
     margin: auto;
     overflow-y: hidden;
   }
@@ -208,7 +207,6 @@
     background-color: #fff;
     display: flex;
     width: 50vh;
-    height: 30vh;
     gap: 3px;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
