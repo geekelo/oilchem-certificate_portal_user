@@ -17,7 +17,7 @@ function SingleCertificate() {
   const [studentId, setStudentId] = useState('');
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
-  const students = useSelector((state) => state.display_certificates.students);
+  const students = useSelector((state) => state.display_certificates.students) || [];
 
   const searchCert = () => {
     const targetStudent = students.find((each) => each.unique_number === studentId);
@@ -44,11 +44,11 @@ function SingleCertificate() {
     const id = location.pathname.split('/').pop();
     setStudentId(id);
 
-    if (students.length > 0) {
+    if (students.length > 0 && certificates.length > 0) {
       searchCert();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, location.pathname, !students]);
+  }, [location.pathname, !students]);
 
   if (foundCertificate.certificate) {
     return (
