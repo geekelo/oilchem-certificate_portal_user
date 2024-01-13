@@ -24,11 +24,6 @@ function SingleCertificate() {
 
   const searchcert = () => {
     if (status) {
-      console.log('no');
-      console.log(status);
-      console.log(studentsstatus);
-      console.log(certificatesstatus);
-      console.log(studentId);
       const targetStudent = students.filter((each) => each.unique_number === studentId);
       if (targetStudent.length > 0) {
         const targertCetificate = certificates
@@ -54,13 +49,11 @@ function SingleCertificate() {
       await dispatch(displayPersonnel());
 
       searchcert();
-      console.log('yes');
     };
 
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     fetchdata();
-    console.log(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, status]);
 
