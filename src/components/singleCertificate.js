@@ -35,9 +35,9 @@ function SingleCertificate() {
     }
   };
 
-  useEffect(() => {
-    searchCert();
-  }, [studentId]);
+  // useEffect(() => {
+  //   searchCert();
+  // }, [studentId]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +50,7 @@ function SingleCertificate() {
         // Once all actions are completed, get the student id
         const id = location.pathname.split('/').pop();
         setStudentId(id);
+        searchCert();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
