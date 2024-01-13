@@ -6,7 +6,9 @@ const initialState = {
   certificates: [],
   personnel: [],
   loggedin: 'empty',
-  status: 'idle',
+  studentsstatus: 'idle',
+  certificatesstatus: 'idle',
+  personnelstatus: 'idle',
   error: 'no errors yet',
 };
 
@@ -85,57 +87,57 @@ const certificatesSlice = createSlice({
       .addCase(displayCertificates.pending, (state) => ({
         ...state,
         loggedin: 'false',
-        status: 'loading',
+        certificatesstatus: 'loading',
       }))
       .addCase(displayCertificates.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         certificates: action.payload,
-        status: 'done',
+        certificatesstatus: 'done',
       }))
       .addCase(displayCertificates.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
-        status: 'failed',
+        certificatesstatus: 'failed',
         error: action.error.message,
       }))
       // extra reducers for displaystudents
       .addCase(displayStudents.pending, (state) => ({
         ...state,
         loggedin: 'false',
-        status: 'loading',
+        studentsstatus: 'loading',
       }))
       .addCase(displayStudents.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         students: action.payload,
-        status: 'done',
+        studentsstatus: 'done',
       }))
       .addCase(displayStudents.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
-        status: 'failed',
+        studentsstatus: 'failed',
         error: action.error.message,
       }))
       // extra reducers for displaypersonnel
       .addCase(displayPersonnel.pending, (state) => ({
         ...state,
         loggedin: 'false',
-        status: 'loading',
+        personnelstatus: 'loading',
       }))
       .addCase(displayPersonnel.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         personnel: action.payload,
-        status: 'done',
+        personnelstatus: 'done',
       }))
       .addCase(displayPersonnel.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
-        status: 'failed',
+        personnelstatus: 'failed',
         error: action.error.message,
       }));
   },

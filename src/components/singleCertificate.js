@@ -37,23 +37,18 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(displayCertificates());
-        await dispatch(displayStudents());
-        await dispatch(displayPersonnel());
+    dispatch(displayCertificates());
+    dispatch(displayStudents());
+    dispatch(displayPersonnel());
 
-        const id = location.pathname.split('/').pop();
-        setStudentId(id);
-        searchCert();
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    const id = location.pathname.split('/').pop();
+    setStudentId(id);
 
-    fetchData(); // Invoke the fetchData function
+    if (students.length > 0) {
+      searchCert();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, location.pathname]);
+  }, [dispatch, location.pathname, !students]);
 
   if (foundCertificate.certificate) {
     return (
