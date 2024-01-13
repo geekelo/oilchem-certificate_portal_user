@@ -52,10 +52,7 @@ function SingleCertificate() {
       await dispatch(displayStudents());
       await dispatch(displayPersonnel());
 
-      if (status) {
-        searchcert();
-        console.log('called');
-      }
+      searchcert();
       console.log('yes');
     };
 
@@ -64,7 +61,7 @@ function SingleCertificate() {
     fetchdata();
     console.log(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, studentId, location.pathname]);
+  }, [dispatch, studentId, studentsstatus, students, location.pathname]);
 
   return (
     <div className="search-cont">
