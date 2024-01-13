@@ -20,7 +20,7 @@ function SingleCertificate() {
   const students = useSelector((state) => state.display_certificates.students) || [];
   const certificatesstatus = useSelector((state) => state.display_certificates.certificatesstatus) || 'idle';
   const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
-  const status = certificatesstatus !== 'idle' && studentsstatus !== 'idle' ? true : null;
+  const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
   useEffect(() => {
     dispatch(displayCertificates());
