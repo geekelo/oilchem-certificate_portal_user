@@ -47,18 +47,22 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
-    dispatch(displayCertificates());
-    dispatch(displayStudents());
-    dispatch(displayPersonnel());
+    const fetchdata = async () => {
+      await dispatch(displayCertificates());
+      await dispatch(displayStudents());
+      await dispatch(displayPersonnel());
+
+      if (status) {
+        searchcert();
+      }
+      console.log('yes');
+    };
 
     const id = location.pathname.split('/').pop();
     setStudentId(id);
-    console.log('yes');
-    if (status) {
-      searchcert();
-    }
+    fetchdata();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, !students, location.pathname]);
+  }, [dispatch, studentId, location.pathname]);
 
   return (
     <div className="search-cont">
