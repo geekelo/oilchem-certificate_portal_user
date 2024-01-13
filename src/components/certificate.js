@@ -17,7 +17,6 @@ function Certificate({ foundCertificate }) {
   const personnel = useSelector((state) => state.display_certificates.personnel);
   const { certificate, student } = foundCertificate;
   const certificateRef = useRef();
-  // const [imageLoaded, setImagesLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(displayPersonnel());
@@ -36,33 +35,6 @@ function Certificate({ foundCertificate }) {
     return `${parseInt(day, 10)} ${monthAbbreviation}, ${year}`;
   };
 
-  // ENSURE ALL IMAGES ARE LOADED
-  // useEffect(() => {
-  //   const image1 = new Image();
-  //   image1.src = sidedesign1;
-
-  //   const image2 = new Image();
-  //   image2.src = sidedesign2;
-
-  //   const image3 = new Image();
-  //   image3.src = logo;
-
-  //   Promise.all([
-  //     new Promise((resolve) => {
-  //       image1.onload = resolve;
-  //     }),
-  //     new Promise((resolve) => {
-  //       image2.onload = resolve;
-  //     }),
-  //     new Promise((resolve) => {
-  //       image3.onload = resolve;
-  //     }),
-  //   ]).then(() => {
-  //     // All images loaded successfully.'
-  //     setImagesLoaded(true);
-  //   });
-  // }, []);
-
   if (personnel) {
     const trainingdirector = personnel
       .filter((each) => each.id === certificate[0].training_director_id);
@@ -77,11 +49,6 @@ function Certificate({ foundCertificate }) {
 
     // CERTIFICTE CONVERTER AND DOWNLOADER
     const downloadCertificate = async () => {
-      // if (!imageLoaded) {
-      //   // Images are not loaded yet. Aborting download.'
-      //   return;
-      // }
-
       const image1 = new Image();
       image1.src = sidedesign1;
 
@@ -125,7 +92,7 @@ function Certificate({ foundCertificate }) {
         pdf.addImage(imgData, 'PNG', 0, 0, 320, 220);
         pdf.save('oilchemgrad.pdf');
       } catch (error) {
-        console.error('Error generating PDF:', error);
+        throw error('Error generating PDF:', error);
       }
     };
 

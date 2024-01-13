@@ -7,6 +7,7 @@ import Certificate from './certificate';
 import CopyButton from './copyBtn';
 import spinner from '../assets/rippleloader.gif';
 import '../stylesheets/notFound.css';
+import '../stylesheets/search.css';
 
 function SingleCertificate() {
   const dispatch = useDispatch();
@@ -14,70 +15,71 @@ function SingleCertificate() {
   const location = useLocation();
   const fullURL = window.location.href;
   const [studentId, setStudentId] = useState('');
-  const [pageNotFound, setpageNotFound] = useState(1);
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
-  const students = useSelector((state) => state.display_certificates.students);
+  const students = useSelector((state) => state.display_certificates.students) || [];
+  const certificatesstatus = useSelector((state) => state.display_certificates.certificatesstatus) || 'idle';
+  const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
+  const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
-  const searchCert = () => {
-    const targetStudent = students.filter((each) => each.unique_number === studentId);
-    if (targetStudent.length > 0) {
-      const targertCetificate = certificates
-        .filter((each) => each.student_id === targetStudent[0].id);
-      if (targertCetificate.length > 0) {
-        setCertificate({
-          certificate: targertCetificate,
-          student: targetStudent,
-        });
+  const searchcert = () => {
+    if (status) {
+      const targetStudent = students.filter((each) => each.unique_number === studentId);
+      if (targetStudent.length > 0) {
+        const targertCetificate = certificates
+          .filter((each) => each.student_id === targetStudent[0].id);
+        if (targertCetificate.length > 0) {
+          setCertificate({
+            certificate: targertCetificate,
+            student: targetStudent,
+          });
+        } else {
+          navigate('/404');
+        }
+      } else {
+        navigate('/404');
       }
-    } else {
-      setpageNotFound(pageNotFound + 1);
     }
   };
 
   useEffect(() => {
-    searchCert();
-  }, [certificates]);
+    const fetchdata = async () => {
+      await dispatch(displayCertificates());
+      await dispatch(displayStudents());
+      await dispatch(displayPersonnel());
 
-  useEffect(() => {
-    dispatch(displayCertificates());
-    dispatch(displayStudents());
-    dispatch(displayPersonnel());
+      searchcert();
+    };
+
     const id = location.pathname.split('/').pop();
     setStudentId(id);
-  }, [dispatch]);
+    fetchdata();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, status]);
 
-  if (pageNotFound > 3) {
-    navigate('/404');
-  }
-
-  if (foundCertificate.certificate) {
-    return (
-      <div className="search-cont">
-        <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
-          <AiFillHome className="menu-icon" />
-        </NavLink>
-        <div className="notification">
-          Link to Certificate -
-          <CopyButton textToCopy={fullURL} />
-        </div>
-        <Certificate foundCertificate={foundCertificate} />
-      </div>
-    );
-  }
   return (
-    <div className="table-cont">
-      <div className="flex-container loader">
-        <div className="loader">
-          <img src={spinner} alt="spinner" width="300" />
-        </div>
-        <p>
-          CHECKING...
-        </p>
-      </div>
+    <div className="search-cont">
       <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
         <AiFillHome className="menu-icon" />
       </NavLink>
+      {foundCertificate.certificate
+        ? (
+          <>
+            <div className="notification">
+              Link to Certificate -
+              <CopyButton textToCopy={fullURL} />
+            </div>
+            <Certificate foundCertificate={foundCertificate} />
+          </>
+        )
+        : (
+          <div className="flex-container loader">
+            <div className="loader">
+              <img src={spinner} alt="spinner" width="300" />
+            </div>
+            <p>CHECKING...</p>
+          </div>
+        )}
     </div>
   );
 }
