@@ -35,6 +35,10 @@ function SingleCertificate() {
 
   if (status) {
     console.log('no');
+    console.log(status);
+    console.log(studentsstatus);
+    console.log(certificatesstatus);
+    console.log(studentId);
     const targetStudent = students.find((each) => each.unique_number === studentId);
     if (targetStudent) {
       const targetCertificate = certificates.find((each) => each.student_id === targetStudent.id);
