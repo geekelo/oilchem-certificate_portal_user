@@ -29,12 +29,13 @@ function SingleCertificate() {
       console.log(studentsstatus);
       console.log(certificatesstatus);
       console.log(studentId);
-      const targetStudent = students.find((each) => each.unique_number === studentId);
-      if (targetStudent) {
-        const targetCertificate = certificates.find((each) => each.student_id === targetStudent.id);
-        if (targetCertificate) {
+      const targetStudent = students.filter((each) => each.unique_number === studentId);
+      if (targetStudent.length > 0) {
+        const targertCetificate = certificates
+          .filter((each) => each.student_id === targetStudent[0].id);
+        if (targertCetificate.length > 0) {
           setCertificate({
-            certificate: targetCertificate,
+            certificate: targertCetificate,
             student: targetStudent,
           });
         } else {
