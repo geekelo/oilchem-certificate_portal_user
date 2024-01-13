@@ -29,9 +29,14 @@ function SingleCertificate() {
           certificate: targertCetificate,
           student: targetStudent,
         });
+      } else {
+        setpageNotFound('yes');
       }
     } else {
       setpageNotFound('yes');
+    }
+    if (pageNotFound === 'yes') {
+      navigate('/404');
     }
   };
 
@@ -49,7 +54,7 @@ function SingleCertificate() {
 
         // Once all actions are completed, get the student id
         const id = location.pathname.split('/').pop();
-        setStudentId(id);
+        await setStudentId(id);
         searchCert();
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -66,10 +71,6 @@ function SingleCertificate() {
   //   const id = location.pathname.split('/').pop();
   //   setStudentId(id);
   // }, [dispatch]);
-
-  if (pageNotFound === 'yes') {
-    navigate('/404');
-  }
 
   if (foundCertificate.certificate) {
     return (
