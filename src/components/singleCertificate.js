@@ -22,20 +22,6 @@ function SingleCertificate() {
   const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
   const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
-  useEffect(() => {
-    dispatch(displayCertificates());
-    dispatch(displayStudents());
-    dispatch(displayPersonnel());
-
-    const id = location.pathname.split('/').pop();
-    setStudentId(id);
-    console.log('yes');
-    if (status) {
-      searchcert();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, !students, location.pathname]);
-
   const searchcert = () => {
     if (status) {
       console.log('no');
@@ -58,7 +44,21 @@ function SingleCertificate() {
         navigate('/404');
       }
     }
-  }
+  };
+
+  useEffect(() => {
+    dispatch(displayCertificates());
+    dispatch(displayStudents());
+    dispatch(displayPersonnel());
+
+    const id = location.pathname.split('/').pop();
+    setStudentId(id);
+    console.log('yes');
+    if (status) {
+      searchcert();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, !students, location.pathname]);
 
   return (
     <div className="search-cont">
