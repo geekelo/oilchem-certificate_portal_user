@@ -14,7 +14,7 @@ function SingleCertificate() {
   const location = useLocation();
   const fullURL = window.location.href;
   const [studentId, setStudentId] = useState('');
-  const [pageNotFound, setpageNotFound] = useState(1);
+  const [pageNotFound, setpageNotFound] = useState('no');
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students);
@@ -31,23 +31,42 @@ function SingleCertificate() {
         });
       }
     } else {
-      setpageNotFound(pageNotFound + 1);
+      setpageNotFound('yes');
     }
   };
 
   useEffect(() => {
     searchCert();
-  }, [certificates]);
+  }, [studentId]);
 
   useEffect(() => {
-    dispatch(displayCertificates());
-    dispatch(displayStudents());
-    dispatch(displayPersonnel());
-    const id = location.pathname.split('/').pop();
-    setStudentId(id);
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        // Dispatch actions and wait for them to complete
+        await dispatch(displayCertificates());
+        await dispatch(displayStudents());
+        await dispatch(displayPersonnel());
 
-  if (pageNotFound > 3) {
+        // Once all actions are completed, get the student id
+        const id = location.pathname.split('/').pop();
+        setStudentId(id);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Invoke the fetchData function
+  }, [dispatch, location.pathname]);
+
+  // useEffect(() => {
+  //   dispatch(displayCertificates());
+  //   dispatch(displayStudents());
+  //   dispatch(displayPersonnel());
+  //   const id = location.pathname.split('/').pop();
+  //   setStudentId(id);
+  // }, [dispatch]);
+
+  if (pageNotFound === 'yes') {
     navigate('/404');
   }
 
