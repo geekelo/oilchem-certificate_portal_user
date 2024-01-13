@@ -18,6 +18,9 @@ function SingleCertificate() {
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students) || [];
+  const certificatesstatus = useSelector((state) => state.display_certificates.certificatesstatus) || 'idle';
+  const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
+  const status = certificatesstatus !== 'idle' && studentsstatus !== 'idle' ? true : null;
 
   useEffect(() => {
     dispatch(displayCertificates());
@@ -30,7 +33,7 @@ function SingleCertificate() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, location.pathname]);
 
-  useEffect(() => {
+  if (status) {
     console.log('no');
     const targetStudent = students.find((each) => each.unique_number === studentId);
     if (targetStudent) {
@@ -46,7 +49,7 @@ function SingleCertificate() {
     } else {
       navigate('/404');
     }
-  }, [studentId, students, certificates, navigate]);
+  }
 
   return (
     <div className="search-cont">
