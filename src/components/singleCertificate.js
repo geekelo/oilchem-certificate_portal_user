@@ -30,28 +30,33 @@ function SingleCertificate() {
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     console.log('yes');
+    if (status) {
+      searchcert();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, location.pathname]);
+  }, [dispatch, !students, location.pathname]);
 
-  if (status) {
-    console.log('no');
-    console.log(status);
-    console.log(studentsstatus);
-    console.log(certificatesstatus);
-    console.log(studentId);
-    const targetStudent = students.find((each) => each.unique_number === studentId);
-    if (targetStudent) {
-      const targetCertificate = certificates.find((each) => each.student_id === targetStudent.id);
-      if (targetCertificate) {
-        setCertificate({
-          certificate: targetCertificate,
-          student: targetStudent,
-        });
+  const searchcert = () => {
+    if (status) {
+      console.log('no');
+      console.log(status);
+      console.log(studentsstatus);
+      console.log(certificatesstatus);
+      console.log(studentId);
+      const targetStudent = students.find((each) => each.unique_number === studentId);
+      if (targetStudent) {
+        const targetCertificate = certificates.find((each) => each.student_id === targetStudent.id);
+        if (targetCertificate) {
+          setCertificate({
+            certificate: targetCertificate,
+            student: targetStudent,
+          });
+        } else {
+          navigate('/404');
+        }
       } else {
         navigate('/404');
       }
-    } else {
-      navigate('/404');
     }
   }
 
