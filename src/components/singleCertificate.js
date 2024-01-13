@@ -55,6 +55,7 @@ function SingleCertificate() {
       if (status) {
         searchcert();
         console.log('called');
+        console.log(status);
       }
       console.log('yes');
     };
