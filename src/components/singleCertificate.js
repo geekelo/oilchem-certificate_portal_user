@@ -55,7 +55,6 @@ function SingleCertificate() {
       if (status) {
         searchcert();
         console.log('called');
-        console.log(status);
       }
       console.log('yes');
     };
@@ -63,6 +62,7 @@ function SingleCertificate() {
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     fetchdata();
+    console.log(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, studentId, location.pathname]);
 
