@@ -62,7 +62,7 @@ function SingleCertificate() {
     fetchdata();
     console.log(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, studentId, studentsstatus, students, location.pathname]);
+  }, [dispatch, !status, location.pathname]);
 
   return (
     <div className="search-cont">
