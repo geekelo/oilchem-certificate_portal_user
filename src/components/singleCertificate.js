@@ -19,7 +19,19 @@ function SingleCertificate() {
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students) || [];
 
-  const searchCert = () => {
+  useEffect(() => {
+    dispatch(displayCertificates());
+    dispatch(displayStudents());
+    dispatch(displayPersonnel());
+
+    const id = location.pathname.split('/').pop();
+    setStudentId(id);
+    console.log('yes');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, location.pathname]);
+
+  useEffect(() => {
+    console.log('no');
     const targetStudent = students.find((each) => each.unique_number === studentId);
     if (targetStudent) {
       const targetCertificate = certificates.find((each) => each.student_id === targetStudent.id);
@@ -34,51 +46,31 @@ function SingleCertificate() {
     } else {
       navigate('/404');
     }
-  };
+  }, [studentId, students, certificates, navigate]);
 
-  useEffect(() => {
-    dispatch(displayCertificates());
-    dispatch(displayStudents());
-    dispatch(displayPersonnel());
-
-    const id = location.pathname.split('/').pop();
-    setStudentId(id);
-
-    if (students.length > 0 && certificates.length > 0) {
-      searchCert();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, !students]);
-
-  if (foundCertificate.certificate) {
-    return (
-      <div className="search-cont">
-        <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
-          <AiFillHome className="menu-icon" />
-        </NavLink>
-        <div className="notification">
-          Link to Certificate -
-          <CopyButton textToCopy={fullURL} />
-        </div>
-        <Certificate foundCertificate={foundCertificate} />
-      </div>
-    );
-  }
-
-  // Display loading spinner only if the foundCertificate is empty
   return (
-    <div className="table-cont">
-      {Object.keys(foundCertificate).length === 0 && (
-        <div className="flex-container loader">
-          <div className="loader">
-            <img src={spinner} alt="spinner" width="300" />
-          </div>
-          <p>CHECKING...</p>
-        </div>
-      )}
+    <div className="search-cont">
       <NavLink className="singlepage-menu-item" style={{ color: '#174217' }} to="/">
         <AiFillHome className="menu-icon" />
       </NavLink>
+      {foundCertificate.certificate
+        ? (
+          <>
+            <div className="notification">
+              Link to Certificate -
+              <CopyButton textToCopy={fullURL} />
+            </div>
+            <Certificate foundCertificate={foundCertificate} />
+          </>
+        )
+        : (
+          <div className="flex-container loader">
+            <div className="loader">
+              <img src={spinner} alt="spinner" width="300" />
+            </div>
+            <p>CHECKING...</p>
+          </div>
+        )}
     </div>
   );
 }
