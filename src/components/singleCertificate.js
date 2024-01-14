@@ -24,9 +24,9 @@ function SingleCertificate() {
 
   const searchcert = async () => {
     while (!status) {
-      await dispatch(displayCertificates());
-      await dispatch(displayStudents());
-      await dispatch(displayPersonnel());
+      dispatch(displayCertificates());
+      dispatch(displayStudents());
+      dispatch(displayPersonnel());
     }
     if (status) {
       const targetStudent = students.filter((each) => each.unique_number === studentId);
