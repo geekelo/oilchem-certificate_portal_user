@@ -38,8 +38,7 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
-    const fetchData = () =>
-       Promise.all([
+    const fetchData = () => Promise.all([
         dispatch(displayCertificates()),
         dispatch(displayStudents()),
         dispatch(displayPersonnel()),
