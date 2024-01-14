@@ -52,6 +52,8 @@ function SingleCertificate() {
         const allFulfilled = results.every((result) => result.status === 'fulfilled');
         console.log(allFulfilled);
         if (allFulfilled) {
+          console.log(certificates);
+          console.log(students);
           const id = location.pathname.split('/').pop();
           setStudentId(id);
           searchcert();
