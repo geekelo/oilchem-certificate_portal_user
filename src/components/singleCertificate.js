@@ -23,7 +23,7 @@ function SingleCertificate() {
   const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle';
 
   const searchcert = async () => {
-    if (status === null) {
+    while (!status) {
       await dispatch(displayCertificates());
       await dispatch(displayStudents());
       await dispatch(displayPersonnel());
@@ -52,7 +52,7 @@ function SingleCertificate() {
     setStudentId(id);
     searchcert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, !status]);
+  }, [dispatch]);
 
   return (
     <div className="search-cont">
