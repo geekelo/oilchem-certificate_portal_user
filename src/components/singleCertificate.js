@@ -39,10 +39,10 @@ function SingleCertificate() {
 
   useEffect(() => {
     const fetchData = () => Promise.all([
-        dispatch(displayCertificates()),
-        dispatch(displayStudents()),
-        dispatch(displayPersonnel()),
-      ]);
+      dispatch(displayCertificates()),
+      dispatch(displayStudents()),
+      dispatch(displayPersonnel()),
+    ]);
 
     fetchData().then(() => {
       const id = location.pathname.split('/').pop();
