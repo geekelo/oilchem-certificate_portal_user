@@ -168,7 +168,7 @@
 @media only screen and (min-width: 325px) and (max-width: 1024px) {
   .certificate-cont {
     display: flex;
-    width: 50vh;
+    width: 80vh;
     height: 50vh;
     margin: auto;
     overflow-y: hidden;
@@ -206,7 +206,7 @@
   .certificate {
     background-color: #fff;
     display: flex;
-    width: 50vh;
+    width: 80vh;
     gap: 3px;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
