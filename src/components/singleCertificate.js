@@ -19,13 +19,7 @@ function SingleCertificate() {
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students) || [];
 
-  const searchcert = async () => {
-    await Promise.all([
-      dispatch(displayCertificates()),
-      dispatch(displayStudents()),
-      dispatch(displayPersonnel()),
-    ]);
-
+  const searchcert = () => {
     const targetStudent = students.filter((each) => each.unique_number === studentId);
     if (targetStudent.length > 0) {
       const targertCetificate = certificates
@@ -44,6 +38,14 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
+    const fetchdata = async () => {
+      await Promise.all([
+        dispatch(displayCertificates()),
+        dispatch(displayStudents()),
+        dispatch(displayPersonnel()),
+      ]);
+    }
+    fetchdata();
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     searchcert();
