@@ -23,10 +23,11 @@ function SingleCertificate() {
   const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
   const searchcert = async () => {
-    await dispatch(displayCertificates());
-    await dispatch(displayStudents());
-    await dispatch(displayPersonnel());
-
+    if (status === null) {
+      await dispatch(displayCertificates());
+      await dispatch(displayStudents());
+      await dispatch(displayPersonnel());
+    }
     if (status) {
       const targetStudent = students.filter((each) => each.unique_number === studentId);
       if (targetStudent.length > 0) {
@@ -51,7 +52,7 @@ function SingleCertificate() {
     setStudentId(id);
     searchcert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, !status]);
 
   return (
     <div className="search-cont">
