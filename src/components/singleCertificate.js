@@ -49,7 +49,7 @@ function SingleCertificate() {
         ]);
         console.log(results);
         // Check if all promises were fulfilled successfully
-        const allFulfilled = results.every((result) => result.loggedin === 'true');
+        const allFulfilled = results.every((result) => result.status === 'fulfilled');
         console.log(allFulfilled);
         if (allFulfilled) {
           const id = location.pathname.split('/').pop();
