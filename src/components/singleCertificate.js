@@ -23,11 +23,11 @@ function SingleCertificate() {
   const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle';
 
   const searchcert = async () => {
-  await Promise.all([
-    dispatch(displayCertificates()),
-    dispatch(displayStudents()),
-    dispatch(displayPersonnel())
-  ]);
+    await Promise.all([
+      dispatch(displayCertificates()),
+      dispatch(displayStudents()),
+      dispatch(displayPersonnel()),
+    ]);
 
     if (status) {
       const targetStudent = students.filter((each) => each.unique_number === studentId);
