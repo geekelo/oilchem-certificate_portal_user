@@ -47,10 +47,10 @@ function SingleCertificate() {
           dispatch(displayStudents()),
           dispatch(displayPersonnel()),
         ]);
-
+        console.log(results);
         // Check if all promises were fulfilled successfully
-        const allFulfilled = results.every((result) => result.studentsstatus === 'done');
-
+        const allFulfilled = results.every((result) => result.loggedin === 'true');
+        console.log(allFulfilled);
         if (allFulfilled) {
           const id = location.pathname.split('/').pop();
           setStudentId(id);
