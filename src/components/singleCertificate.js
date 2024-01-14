@@ -44,7 +44,7 @@ function SingleCertificate() {
         dispatch(displayStudents()),
         dispatch(displayPersonnel()),
       ]);
-    }
+    };
     fetchdata();
     const id = location.pathname.split('/').pop();
     setStudentId(id);
