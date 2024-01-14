@@ -38,20 +38,19 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
-    const fetchData = () => {
-      return Promise.all([
+    const fetchData = () =>
+       Promise.all([
         dispatch(displayCertificates()),
         dispatch(displayStudents()),
         dispatch(displayPersonnel()),
       ]);
-    };
-  
+
     fetchData().then(() => {
       const id = location.pathname.split('/').pop();
       setStudentId(id);
       searchcert();
     });
-  
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
