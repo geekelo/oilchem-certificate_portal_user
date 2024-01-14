@@ -22,7 +22,11 @@ function SingleCertificate() {
   const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
   const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
-  const searchcert = () => {
+  const searchcert = async () => {
+    await dispatch(displayCertificates());
+    await dispatch(displayStudents());
+    await dispatch(displayPersonnel());
+
     if (status) {
       const targetStudent = students.filter((each) => each.unique_number === studentId);
       if (targetStudent.length > 0) {
@@ -43,19 +47,11 @@ function SingleCertificate() {
   };
 
   useEffect(() => {
-    const fetchdata = async () => {
-      await dispatch(displayCertificates());
-      await dispatch(displayStudents());
-      await dispatch(displayPersonnel());
-
-      searchcert();
-    };
-
     const id = location.pathname.split('/').pop();
     setStudentId(id);
-    fetchdata();
+    searchcert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, status]);
+  }, [dispatch]);
 
   return (
     <div className="search-cont">
