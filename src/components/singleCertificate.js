@@ -20,20 +20,22 @@ function SingleCertificate() {
   const students = useSelector((state) => state.display_certificates.students) || [];
 
   const searchcert = () => {
-    const targetStudent = students.filter((each) => each.unique_number === studentId);
-    if (targetStudent.length > 0) {
-      const targertCetificate = certificates
-        .filter((each) => each.student_id === targetStudent[0].id);
-      if (targertCetificate.length > 0) {
-        setCertificate({
-          certificate: targertCetificate,
-          student: targetStudent,
-        });
+    if (students) {
+      const targetStudent = students.filter((each) => each.unique_number === studentId);
+      if (targetStudent.length > 0) {
+        const targertCetificate = certificates
+          .filter((each) => each.student_id === targetStudent[0].id);
+        if (targertCetificate.length > 0) {
+          setCertificate({
+            certificate: targertCetificate,
+            student: targetStudent,
+          });
+        } else {
+          navigate('/404');
+        }
       } else {
         navigate('/404');
       }
-    } else {
-      navigate('/404');
     }
   };
 
