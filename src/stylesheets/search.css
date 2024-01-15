@@ -73,6 +73,9 @@ input {
   }
 
   .search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(14, 57, 26);
     border-radius: 2rem;
     height: 4vh;
@@ -91,7 +94,7 @@ input {
     gap: 5px;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
     margin: auto;
   }
 
@@ -116,8 +119,8 @@ input {
   }
 
   .noNotification {
-    background-color: #fff0;
-    width: 70%;
+    background-color: rgba(68, 42, 42, 0);
+    width: 30vh;
   }
 
   .copybtnSection {
