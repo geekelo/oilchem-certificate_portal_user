@@ -80,6 +80,7 @@ function SingleCertificate() {
   }, [certificates]);
 
   useEffect(() => {
+    dispatch(displayPersonnel());
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     searchcert();
