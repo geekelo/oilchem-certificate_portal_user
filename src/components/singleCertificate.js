@@ -42,40 +42,6 @@ function SingleCertificate() {
     }
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // Use Promise.allSettled to ensure that all promises are settled,
-  //       // regardless of success or failure.
-  //       const results = await Promise.allSettled([
-  //         dispatch(displayCertificates()),
-  //         dispatch(displayStudents()),
-  //         dispatch(displayPersonnel()),
-  //       ]);
-  //       console.log(results);
-  //       // Check if all promises were fulfilled successfully
-  //       const allFulfilled = results.every((result) => result.status === 'fulfilled');
-  //       console.log(allFulfilled);
-  //       if (allFulfilled) {
-  //         console.log(certificates);
-  //         console.log(students);
-  //         const id = location.pathname.split('/').pop();
-  //         setStudentId(id);
-  //         searchcert();
-  //       } else {
-  //         // Handle the case where any of the promises was rejected.
-  //         console.error('One or more actions failed.');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dispatch, location.pathname, certi]);
-
   useEffect(() => {
     dispatch(displayCertificates());
   }, [dispatch]);
