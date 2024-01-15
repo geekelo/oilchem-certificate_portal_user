@@ -18,9 +18,12 @@ function SingleCertificate() {
   const [foundCertificate, setCertificate] = useState({});
   const certificates = useSelector((state) => state.display_certificates.certificates);
   const students = useSelector((state) => state.display_certificates.students) || [];
+  const certificatesstatus = useSelector((state) => state.display_certificates.certificatesstatus) || 'idle';
+  const studentsstatus = useSelector((state) => state.display_certificates.studentsstatus) || 'idle';
+  const status = certificatesstatus !== 'idle' && certificatesstatus !== 'loading' && studentsstatus !== 'loading' && studentsstatus !== 'idle' ? true : null;
 
   const searchcert = () => {
-    if (students) {
+    if (status) {
       const targetStudent = students.filter((each) => each.unique_number === studentId);
       if (targetStudent.length > 0) {
         const targertCetificate = certificates
@@ -86,7 +89,7 @@ function SingleCertificate() {
     const id = location.pathname.split('/').pop();
     setStudentId(id);
     searchcert();
-  }, [students]);
+  }, [status]);
 
   return (
     <div className="search-cont">
