@@ -124,17 +124,17 @@ function Certificate({ foundCertificate }) {
                 </div>
                 <div className="personnel">
                   <div>
-                    <img className="personnel-signature" src={trainingdirector[0].signature} alt="sign" width="50" />
+                    <img className="personnel-signature" src={trainingdirector[0].signature} alt="sign" width="100" />
                     <p className="cert-awardedto">{trainingdirector[0].name}</p>
                     <p className="cert-awardedto personnel-title">Training Director</p>
                   </div>
                   <div>
-                    <img className="personnel-signature" src={traininginstructor[0].signature} alt="sign" width="50" />
+                    <img className="personnel-signature" src={traininginstructor[0].signature} alt="sign" width="100" />
                     <p className="cert-awardedto">{traininginstructor[0].name}</p>
                     <p className="cert-awardedto personnel-title">External Facilitator</p>
                   </div>
                   <div>
-                    <img className="personnel-signature" src={externalfacilitator[0].signature} alt="sign" width="50" />
+                    <img className="personnel-signature" src={externalfacilitator[0].signature} alt="sign" width="100" />
                     <p className="cert-awardedto">{externalfacilitator[0].name}</p>
                     <p className="cert-awardedto personnel-title">Training Director</p>
                   </div>

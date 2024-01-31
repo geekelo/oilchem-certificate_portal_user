@@ -2,7 +2,6 @@
 
 .certificate-cont {
   display: flex;
-  width: 250vh;
   margin: auto;
   overflow-y: hidden;
 }
