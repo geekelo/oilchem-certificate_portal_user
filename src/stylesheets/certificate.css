@@ -98,6 +98,7 @@
 .personnel-signature {
   display: block;
   margin: auto;
+  image-resolution: 300dpi;
 }
 
 .personnel-title {

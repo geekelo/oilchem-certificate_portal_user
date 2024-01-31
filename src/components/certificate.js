@@ -134,7 +134,7 @@ function Certificate({ foundCertificate }) {
                     <p className="cert-awardedto personnel-title">External Facilitator</p>
                   </div>
                   <div>
-                    <img className="personnel-signature" src={externalfacilitator[0].signature} alt="sign" width="100" />
+                    <img className="personnel-signature" src={externalfacilitator[0].signature} alt="sign" width="200" />
                     <p className="cert-awardedto">{externalfacilitator[0].name}</p>
                     <p className="cert-awardedto personnel-title">Training Director</p>
                   </div>
