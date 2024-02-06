@@ -109,7 +109,7 @@ function Certificate({ foundCertificate }) {
                 <img src={logo} alt="logo" width="150" className="cert-logo" />
                 <h2 className="cert-name">{certificate[0].name}</h2>
                 <p className="cert-title">{certificate[0].title}</p>
-                <p className="cert-awardedto">Certificate Awarded to:</p>
+                <p className="cert-awardedto">Awarded to:</p>
                 <p className="stud-name">{student[0].name}</p>
                 <p className="cert-purpose">{certificate[0].purpose}</p>
                 <p className="cert-title">{certificate[0].course}</p>
